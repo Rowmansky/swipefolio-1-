@@ -1,0 +1,19 @@
+[
+  {
+    "symbol": "AAPL",
+    "disclosureDate": "2025-01-20",
+    "transactionDate": "2024-12-31",
+    "firstName": "Nancy",
+    "lastName": "Pelosi",
+    "office": "Nancy Pelosi",
+    "district": "CA11",
+    "owner": "Spouse",
+    "assetDescription": "Apple Inc",
+    "assetType": "Stock",
+    "type": "Sale",
+    "amount": "$10,000,001 - $25,000,000",
+    "capitalGainsOver200USD": "False",
+    "comment": "",
+    "link": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2025/20026590.pdf"
+  }
+]

@@ -1,0 +1,4 @@
+python-dotenv
+schedule
+supabase>=0.5.6
+pytest>=7.0.0

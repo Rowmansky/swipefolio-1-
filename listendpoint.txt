@@ -1,0 +1,149 @@
+Part 2 Mapping:
+
+“Live” Calls (1 Min Interval)
+
+1 Min Interval Stock Chart Data
+Endpoint: https://financialmodelingprep.com/stable/historical-chart/1min?symbol={symbol}
+Doc Ref: 1 Min Interval Stock Chart API
+All Technicals (...) - 1 min intervals (Requires multiple calls)
+SMA: https://financialmodelingprep.com/stable/technical-indicators/sma?symbol={symbol}&periodLength={periodLength}&timeframe=1min (Doc Ref: Simple Moving Average API)
+EMA: https://financialmodelingprep.com/stable/technical-indicators/ema?symbol={symbol}&periodLength={periodLength}&timeframe=1min (Doc Ref: Exponential Moving Average API)
+WMA: https://financialmodelingprep.com/stable/technical-indicators/wma?symbol={symbol}&periodLength={periodLength}&timeframe=1min (Doc Ref: Weighted Moving Average API)
+DEMA: https://financialmodelingprep.com/stable/technical-indicators/dema?symbol={symbol}&periodLength={periodLength}&timeframe=1min (Doc Ref: Double Exponential Moving Average API)
+TEMA: https://financialmodelingprep.com/stable/technical-indicators/tema?symbol={symbol}&periodLength={periodLength}&timeframe=1min (Doc Ref: Triple Exponential Moving Average API)
+RSI: https://financialmodelingprep.com/stable/technical-indicators/rsi?symbol={symbol}&periodLength={periodLength}&timeframe=1min (Doc Ref: Relative Strength Index API)
+ADX: https://financialmodelingprep.com/stable/technical-indicators/adx?symbol={symbol}&periodLength={periodLength}&timeframe=1min (Doc Ref: Average Directional Index API)
+Williams %R: https://financialmodelingprep.com/stable/technical-indicators/williams?symbol={symbol}&periodLength={periodLength}&timeframe=1min (Doc Ref: Williams API)
+1 Min Interval Index Price
+Endpoint: https://financialmodelingprep.com/stable/historical-chart/1min?symbol={index_symbol}
+Doc Ref: 1-Minute Interval Index Price API
+Hourly Calls
+
+Search stock news
+Endpoint: https://financialmodelingprep.com/stable/news/stock?symbols={comma_separated_symbols}
+Doc Ref: Search Stock News API
+Daily (at night?)
+
+Search press news
+Endpoint: https://financialmodelingprep.com/stable/news/press-releases?symbols={comma_separated_symbols}
+Doc Ref: Search Press Releases API
+Price Target News
+Endpoint: https://financialmodelingprep.com/stable/price-target-news?symbol={symbol}
+Doc Ref: Price Target News API
+Stock Grade News limit 15
+Endpoint: https://financialmodelingprep.com/stable/grades-news?symbol={symbol}&limit=15
+Doc Ref: Stock Grade News API
+Stock Grades
+Endpoint: https://financialmodelingprep.com/stable/grades?symbol={symbol}
+Doc Ref: Stock Grades API
+Stock Price and Volume Data (to append the past day)
+Endpoint: https://financialmodelingprep.com/stable/historical-price-eod/full?symbol={symbol}&from={date}&to={date} (Or use timeseries=1 if supported)
+Doc Ref: Stock Price and Volume Data API
+Historical Index Light Chart (for a handful of indeces)
+Endpoint: https://financialmodelingprep.com/stable/historical-price-eod/light?symbol={index_symbol}&from={date}&to={date} (Or use timeseries=1 if supported)
+Doc Ref: Historical Index Light Chart API
+Weekly (only updating if new information is detected)
+
+Ratings Financial Estimates
+Endpoint: https://financialmodelingprep.com/stable/analyst-estimates?symbol={symbol}&period={period} (Use period=annual and period=quarter)
+Doc Ref: Financial Estimates API
+Ratings - Snapshot
+Endpoint: https://financialmodelingprep.com/stable/ratings-snapshot?symbol={symbol}
+Doc Ref: Ratings Snapshot API
+Price Target Consensus
+Endpoint: https://financialmodelingprep.com/stable/price-target-consensus?symbol={symbol}
+Doc Ref: Price Target Consensus API
+Earnings Report
+Endpoint: https://financialmodelingprep.com/stable/earnings?symbol={symbol}
+Doc Ref: Earnings Report API (*) Potentially needs verification for historical surprise data vs. just calendar/estimates.
+Dividends Company
+Endpoint: https://financialmodelingprep.com/stable/dividends?symbol={symbol}
+Doc Ref: Dividends Company API (*) Need to verify if omitting from/to gets full history or if another endpoint like /historical-price-full/stock_dividend/{symbol} is needed.
+Key Metrics - Quarterly
+Endpoint: https://financialmodelingprep.com/stable/key-metrics?symbol={symbol}&period=quarter&limit=1
+Doc Ref: Key Metrics API (*) Parameter usage likely correct but not explicitly in doc text.
+Financial Ratios - Quarterly
+Endpoint: https://financialmodelingprep.com/stable/ratios?symbol={symbol}&period=quarter&limit=1
+Doc Ref: Financial Ratios API (*) Parameter usage likely correct but not explicitly in doc text.
+Key Metrics TTM
+Endpoint: https://financialmodelingprep.com/stable/key-metrics-ttm?symbol={symbol}
+Doc Ref: Key Metrics TTM API
+Financial Ratios TTM
+Endpoint: https://financialmodelingprep.com/stable/ratios-ttm?symbol={symbol}
+Doc Ref: Financial Ratios TTM API
+Financial Scores
+Endpoint: https://financialmodelingprep.com/stable/financial-scores?symbol={symbol}
+Doc Ref: Financial Scores API
+Owners Earnings
+Endpoint: https://financialmodelingprep.com/stable/owner-earnings?symbol={symbol}&limit=1
+Doc Ref: Owner Earnings API
+Enterprise Values - Period = Quarter
+Endpoint: https://financialmodelingprep.com/stable/enterprise-values?symbol={symbol}&period=quarter&limit=1
+Doc Ref: Enterprise Values API (*) Parameter usage likely correct but not explicitly in doc text.
+Income Statement
+Endpoint: https://financialmodelingprep.com/stable/income-statement?symbol={symbol}&period=quarter&limit=1
+Doc Ref: Income Statement API
+And Growth (Income Stmt Growth)
+Endpoint: https://financialmodelingprep.com/stable/income-statement-growth?symbol={symbol}&period=quarter&limit=1
+Doc Ref: Income Statement Growth API
+Balance Sheet
+Endpoint: https://financialmodelingprep.com/stable/balance-sheet-statement?symbol={symbol}&period=quarter&limit=1
+Doc Ref: Balance Sheet Statement API
+And growth (Balance Sheet Growth)
+Endpoint: https://financialmodelingprep.com/stable/balance-sheet-statement-growth?symbol={symbol}&period=quarter&limit=1
+Doc Ref: Balance Sheet Statement Growth API
+Cash Flow Statement
+Endpoint: https://financialmodelingprep.com/stable/cash-flow-statement?symbol={symbol}&period=quarter&limit=1
+Doc Ref: Cash Flow Statement API
+And growth (Cash Flow Growth)
+Endpoint: https://financialmodelingprep.com/stable/cash-flow-statement-growth?symbol={symbol}&period=quarter&limit=1
+Doc Ref: Cashflow Statement Growth API
+Search Insider Trades
+Endpoint: https://financialmodelingprep.com/stable/insider-trading/search?symbol={symbol}&limit={limit}
+Doc Ref: Search Insider Trades API (*) Requires correction from /insider-trading/{symbol} path structure.
+Latest Senate Financial Disclosures (general)
+Endpoint: https://financialmodelingprep.com/stable/senate-latest
+Doc Ref: Latest Senate Financial Disclosures API
+Latest House Financial Disclosures (general)
+Endpoint: https://financialmodelingprep.com/stable/house-latest
+Doc Ref: Latest House Financial Disclosures API
+Senate Trading Activity (stock)
+Endpoint: https://financialmodelingprep.com/stable/senate-trades?symbol={symbol}&limit={limit}
+Doc Ref: Senate Trading Activity API (*) This is one of the two endpoints needed for political disclosures by symbol.
+US House Trades (stock)
+Endpoint: https://financialmodelingprep.com/stable/house-trades?symbol={symbol}&limit={limit}
+Doc Ref: U.S. House Trades API (*) This is the second endpoint needed for political disclosures by symbol.
+Monthly (2nd of each month)
+
+Historical Stock Grades
+Endpoint: https://financialmodelingprep.com/stable/grades-historical?symbol={symbol}
+Doc Ref: Historical Stock Grades API
+Company Profile Data
+Endpoint: https://financialmodelingprep.com/stable/profile?symbol={symbol}
+Doc Ref: Company Profile Data API
+Stock Peer Comparison
+Endpoint: https://financialmodelingprep.com/stable/stock-peers?symbol={symbol}
+Doc Ref: Stock Peer Comparison API
+ESG Investment Search
+Endpoint: https://financialmodelingprep.com/stable/esg-disclosures?symbol={symbol}
+Doc Ref: ESG Investment Search API
+DCF Valuation
+Endpoint: https://financialmodelingprep.com/stable/discounted-cash-flow?symbol={symbol}
+Doc Ref: DCF Valuation API
+Levered DCF
+Endpoint: https://financialmodelingprep.com/stable/levered-discounted-cash-flow?symbol={symbol}
+Doc Ref: Levered DCF API
+Positions Summary - Year 2025 Quarter 1
+Endpoint: https://financialmodelingprep.com/stable/institutional-ownership/symbol-positions-summary?symbol={symbol}&year=2025&quarter=1
+Doc Ref: Positions Summary API
+Filings Extract with Analytics by Holder
+Endpoint: https://financialmodelingprep.com/stable/institutional-ownership/extract-analytics/holder?symbol={symbol}&year=2025&quarter=1
+Doc Ref: Filings Extract With Analytics By Holder API
+Quarterly
+
+ESG Ratings
+Endpoint: https://financialmodelingprep.com/stable/esg-ratings?symbol={symbol}
+Doc Ref: ESG Ratings API (*) Requires correction from /esg-score/{symbol} path structure.
+Insider Trading Statistics
+Endpoint: https://financialmodelingprep.com/stable/insider-trading/statistics?symbol={symbol}
+Doc Ref: Insider Trade Statistics API

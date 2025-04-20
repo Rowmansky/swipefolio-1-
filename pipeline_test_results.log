@@ -1,0 +1,461 @@
+2025-04-16 18:29:46,111 - comprehensive_test - INFO - Starting comprehensive testing with 10 symbols
+2025-04-16 18:29:46,112 - comprehensive_test - INFO - Selected symbols: ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'JPM', 'JNJ', 'PG', 'XOM', 'DIS', 'CAT']
+2025-04-16 18:29:46,113 - comprehensive_test - INFO - Will test 4 tasks: ['profiles', 'prices', 'metrics_ttm', 'news']
+2025-04-16 18:29:46,113 - comprehensive_test - INFO - ============================== TESTING: profiles ==============================
+2025-04-16 18:29:47,619 - root - INFO - Supabase client initialized successfully.
+2025-04-16 18:29:47,624 - comprehensive_test - INFO - Testing profiles for 10 symbols
+2025-04-16 18:29:47,624 - fmp_fetcher.tasks.stock_data_tasks - INFO - Starting profile fetch for 10 symbols.
+2025-04-16 18:29:47,625 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/profile-bulk with params: {'part': 0, 'apikey': '***REDACTED***'}
+2025-04-16 18:29:48,606 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/profile-bulk. Attempting CSV parsing.
+2025-04-16 18:29:48,911 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 21290 rows
+2025-04-16 18:29:48,932 - fmp_fetcher.tasks.stock_data_tasks - INFO - Found 10 profiles in bulk data matching requested symbols.
+2025-04-16 18:29:49,523 - httpx - INFO - HTTP Request: POST https://fzluwxuxvegdonfumsnz.supabase.co/rest/v1/stocks?columns=%22industry%22%2C%22ceo%22%2C%22hq_address%22%2C%22symbol%22%2C%22description%22%2C%22ipo_date%22%2C%22cik%22%2C%22exchange_short_name%22%2C%22exchange%22%2C%22company_name%22%2C%22is_fund%22%2C%22market_cap%22%2C%22beta%22%2C%22is_actively_trading%22%2C%22is_etf%22%2C%22sector%22%2C%22country%22%2C%22website%22%2C%22employees%22 "HTTP/2 201 Created"
+2025-04-16 18:29:49,528 - fmp_fetcher.clients.db_client - INFO - Successfully upserted 10 record(s) into 'stocks'.
+2025-04-16 18:29:49,528 - fmp_fetcher.tasks.stock_data_tasks - INFO - Successfully processed 10 out of 10 matched profiles.
+2025-04-16 18:29:50,595 - comprehensive_test - INFO - ============================== TESTING: prices ==============================
+2025-04-16 18:29:50,596 - comprehensive_test - INFO - Testing daily prices for 10 symbols with date 2025-04-15
+2025-04-16 18:29:50,596 - fmp_fetcher.tasks.stock_data_tasks - INFO - Starting EOD price fetch for 10 symbols for date 2025-04-15.
+2025-04-16 18:29:50,597 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/eod-bulk with params: {'date': '2025-04-15', 'apikey': '***REDACTED***'}
+2025-04-16 18:29:54,401 - fmp_fetcher.clients.fmp_client - ERROR - Failed to decode JSON from https://financialmodelingprep.com/stable/eod-bulk. Response text: "symbol","date","open","low","high","close","adjClose","volume"
+"HOTMOONUSD","2025-04-15",1.0989305e-9,1.0977155e-9,1.098961e-9,1.0978766e-9,1.0978766e-9,0
+"XENUSD","2025-04-15",6.6997e-8,6.6704e-8,6....
+2025-04-16 18:29:54,404 - fmp_fetcher.tasks.stock_data_tasks - ERROR - Failed to fetch bulk EOD data from FMP API for date 2025-04-15.
+2025-04-16 18:29:55,408 - comprehensive_test - INFO - ============================== TESTING: metrics_ttm ==============================
+2025-04-16 18:29:55,418 - comprehensive_test - INFO - Testing TTM metrics for 10 symbols
+2025-04-16 18:29:55,418 - fmp_fetcher.tasks.metrics_tasks - INFO - Starting Bulk TTM key metrics/ratios fetch for 10 symbols.
+2025-04-16 18:29:55,419 - fmp_fetcher.tasks.metrics_tasks - INFO - Fetching data from /key-metrics-ttm-bulk...
+2025-04-16 18:29:55,419 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/key-metrics-ttm-bulk with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:02,677 - fmp_fetcher.clients.fmp_client - ERROR - Failed to decode JSON from https://financialmodelingprep.com/stable/key-metrics-ttm-bulk. Response text: "symbol","marketCap","enterpriseValueTTM","evToSalesTTM","evToOperatingCashFlowTTM","evToFreeCashFlowTTM","evToEBITDATTM","netDebtToEBITDATTM","currentRatioTTM","incomeQualityTTM","grahamNumberTTM","g...
+2025-04-16 18:30:02,684 - fmp_fetcher.tasks.metrics_tasks - WARNING - Bulk metrics endpoint returned invalid data format.
+2025-04-16 18:30:02,684 - fmp_fetcher.tasks.metrics_tasks - INFO - Fetching data from /ratios-ttm-bulk...
+2025-04-16 18:30:02,685 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/ratios-ttm-bulk with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:13,053 - fmp_fetcher.clients.fmp_client - ERROR - Failed to decode JSON from https://financialmodelingprep.com/stable/ratios-ttm-bulk. Response text: "symbol","grossProfitMarginTTM","ebitMarginTTM","ebitdaMarginTTM","operatingProfitMarginTTM","pretaxProfitMarginTTM","continuousOperationsProfitMarginTTM","netProfitMarginTTM","bottomLineProfitMarginT...
+2025-04-16 18:30:13,063 - fmp_fetcher.tasks.metrics_tasks - WARNING - Bulk ratios endpoint returned invalid data format.
+2025-04-16 18:30:13,064 - fmp_fetcher.tasks.metrics_tasks - INFO - Both bulk endpoints failed. Falling back to symbol-by-symbol fetching.
+2025-04-16 18:30:13,064 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/key-metrics-ttm/AAPL with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:13,176 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/ratios-ttm/AAPL with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:13,278 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/key-metrics-ttm/MSFT with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:13,583 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/ratios-ttm/MSFT with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:13,781 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/key-metrics-ttm/GOOGL with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:13,889 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/ratios-ttm/GOOGL with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:13,998 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/key-metrics-ttm/AMZN with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:14,131 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/ratios-ttm/AMZN with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:14,235 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/key-metrics-ttm/JPM with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:14,334 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/ratios-ttm/JPM with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:14,442 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/key-metrics-ttm/JNJ with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:14,549 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/ratios-ttm/JNJ with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:14,675 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/key-metrics-ttm/PG with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:14,796 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/ratios-ttm/PG with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:14,905 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/key-metrics-ttm/XOM with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:15,020 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/ratios-ttm/XOM with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:15,144 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/key-metrics-ttm/DIS with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:15,284 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/ratios-ttm/DIS with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:15,401 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/key-metrics-ttm/CAT with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:15,516 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/ratios-ttm/CAT with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:30:15,627 - fmp_fetcher.tasks.metrics_tasks - INFO - Successfully fetched TTM metrics for 0 symbols individually.
+2025-04-16 18:30:15,627 - fmp_fetcher.tasks.metrics_tasks - INFO - Successfully fetched TTM ratios for 0 symbols individually.
+2025-04-16 18:30:15,628 - fmp_fetcher.tasks.metrics_tasks - ERROR - Failed to fetch any TTM data from both bulk endpoints and individual endpoints.
+2025-04-16 18:30:16,631 - comprehensive_test - INFO - ============================== TESTING: news ==============================
+2025-04-16 18:30:16,634 - comprehensive_test - INFO - Testing stock news for 10 symbols with limit 3
+2025-04-16 18:30:16,635 - fmp_fetcher.tasks.news_releases_tasks - INFO - Starting stock news fetch for 10 symbols.
+2025-04-16 18:30:16,635 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/stable/news/stock with params: {'symbols': 'AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT', 'limit': 3, 'apikey': '***REDACTED***'}
+2025-04-16 18:30:16,742 - fmp_fetcher.tasks.news_releases_tasks - INFO - Received 0 stock news items for symbols chunk: AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT. Parsing...
+2025-04-16 18:30:16,743 - fmp_fetcher.tasks.news_releases_tasks - WARNING - Failed to parse stock news for symbols chunk: AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT
+2025-04-16 18:30:16,743 - fmp_fetcher.tasks.news_releases_tasks - WARNING - No valid stock news records could be parsed.
+2025-04-16 18:30:16,744 - fmp_fetcher.tasks.news_releases_tasks - INFO - Finished stock news fetch for 10 requested symbols. Encountered fetch errors: False
+2025-04-16 18:30:17,749 - comprehensive_test - INFO - 
+==================================================
+2025-04-16 18:30:17,750 - comprehensive_test - INFO - TEST RESULTS SUMMARY
+2025-04-16 18:30:17,750 - comprehensive_test - INFO - ==================================================
+2025-04-16 18:30:17,761 - comprehensive_test - INFO - 
+Tasks completed: 4
+2025-04-16 18:30:17,762 - comprehensive_test - INFO - Tasks successful: 1
+2025-04-16 18:30:17,762 - comprehensive_test - INFO - Tasks failed: 3
+2025-04-16 18:34:15,624 - comprehensive_test - INFO - Starting comprehensive testing with 10 symbols
+2025-04-16 18:34:15,625 - comprehensive_test - INFO - Selected symbols: ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'JPM', 'JNJ', 'PG', 'XOM', 'DIS', 'CAT']
+2025-04-16 18:34:15,625 - comprehensive_test - INFO - Will test 4 tasks: ['profiles', 'prices', 'metrics_ttm', 'news']
+2025-04-16 18:34:15,626 - comprehensive_test - INFO - ------------------------------ TESTING: profiles ------------------------------
+2025-04-16 18:34:16,712 - root - INFO - Supabase client initialized successfully.
+2025-04-16 18:34:16,724 - comprehensive_test - INFO - Testing profiles for 10 symbols
+2025-04-16 18:34:16,724 - fmp_fetcher.tasks.stock_data_tasks - INFO - Starting profile fetch for 10 symbols.
+2025-04-16 18:34:16,725 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/profile-bulk with params: {'part': 0, 'apikey': '***REDACTED***'}
+2025-04-16 18:34:17,810 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/profile-bulk. Attempting CSV parsing.
+2025-04-16 18:34:18,087 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 21290 rows
+2025-04-16 18:34:18,112 - fmp_fetcher.tasks.stock_data_tasks - INFO - Found 10 profiles in bulk data matching requested symbols.
+2025-04-16 18:34:18,658 - httpx - INFO - HTTP Request: POST https://fzluwxuxvegdonfumsnz.supabase.co/rest/v1/stocks?columns=%22is_etf%22%2C%22ceo%22%2C%22hq_address%22%2C%22beta%22%2C%22exchange%22%2C%22cik%22%2C%22ipo_date%22%2C%22country%22%2C%22sector%22%2C%22symbol%22%2C%22description%22%2C%22market_cap%22%2C%22is_actively_trading%22%2C%22is_fund%22%2C%22website%22%2C%22company_name%22%2C%22exchange_short_name%22%2C%22industry%22%2C%22employees%22 "HTTP/2 200 OK"
+2025-04-16 18:34:18,663 - fmp_fetcher.clients.db_client - INFO - Successfully upserted 10 record(s) into 'stocks'.
+2025-04-16 18:34:18,663 - fmp_fetcher.tasks.stock_data_tasks - INFO - Successfully processed 10 out of 10 matched profiles.
+2025-04-16 18:34:18,686 - comprehensive_test - INFO - Task profiles: [SUCCESS] [Duration: 3.06s]
+2025-04-16 18:34:19,687 - comprehensive_test - INFO - ------------------------------ TESTING: prices ------------------------------
+2025-04-16 18:34:19,688 - comprehensive_test - INFO - Testing daily prices for 10 symbols with date 2025-04-15
+2025-04-16 18:34:19,688 - fmp_fetcher.tasks.stock_data_tasks - INFO - Starting EOD price fetch for 10 symbols for date 2025-04-15.
+2025-04-16 18:34:19,688 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/eod-bulk with params: {'date': '2025-04-15', 'apikey': '***REDACTED***'}
+2025-04-16 18:34:20,342 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/eod-bulk. Attempting CSV parsing.
+2025-04-16 18:34:20,450 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 67931 rows
+2025-04-16 18:34:20,453 - fmp_fetcher.tasks.stock_data_tasks - INFO - Received 67931 EOD records from bulk API for 2025-04-15. Parsing target symbols...
+2025-04-16 18:34:20,461 - fmp_fetcher.utils.parsing - INFO - Parsed 10 daily price records for 10 target symbols from bulk data.
+2025-04-16 18:34:20,462 - fmp_fetcher.tasks.stock_data_tasks - INFO - Successfully parsed 10 EOD price records for target symbols.
+2025-04-16 18:34:20,601 - httpx - INFO - HTTP Request: POST https://fzluwxuxvegdonfumsnz.supabase.co/rest/v1/stock_prices_daily?columns=%22high%22%2C%22open%22%2C%22unadjusted_volume%22%2C%22change%22%2C%22change_percent%22%2C%22symbol%22%2C%22adj_close%22%2C%22volume%22%2C%22vwap%22%2C%22label%22%2C%22change_over_time%22%2C%22low%22%2C%22close%22%2C%22date%22 "HTTP/2 201 Created"
+2025-04-16 18:34:20,604 - fmp_fetcher.clients.db_client - INFO - Successfully upserted 10 record(s) into 'stock_prices_daily'.
+2025-04-16 18:34:20,604 - fmp_fetcher.tasks.stock_data_tasks - INFO - Successfully upserted 10 EOD price records into the database for 2025-04-15.
+2025-04-16 18:34:20,615 - comprehensive_test - INFO - Task prices: [SUCCESS] [Duration: 0.93s]
+2025-04-16 18:34:21,616 - comprehensive_test - INFO - ------------------------------ TESTING: metrics_ttm ------------------------------
+2025-04-16 18:34:21,651 - comprehensive_test - INFO - Testing TTM metrics for 10 symbols
+2025-04-16 18:34:21,651 - fmp_fetcher.tasks.metrics_tasks - INFO - Starting Bulk TTM key metrics/ratios fetch for 10 symbols.
+2025-04-16 18:34:21,652 - fmp_fetcher.tasks.metrics_tasks - INFO - Fetching data from /key-metrics-ttm-bulk...
+2025-04-16 18:34:21,652 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/key-metrics-ttm-bulk with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:34:27,006 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/key-metrics-ttm-bulk. Attempting CSV parsing.
+2025-04-16 18:34:27,566 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 66866 rows
+2025-04-16 18:34:27,611 - fmp_fetcher.tasks.metrics_tasks - INFO - Successfully fetched TTM metrics for 10 symbols via bulk endpoint.
+2025-04-16 18:34:27,612 - fmp_fetcher.tasks.metrics_tasks - INFO - Fetching data from /ratios-ttm-bulk...
+2025-04-16 18:34:27,612 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/ratios-ttm-bulk with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:34:37,456 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/ratios-ttm-bulk. Attempting CSV parsing.
+2025-04-16 18:34:38,317 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 66866 rows
+2025-04-16 18:34:38,388 - fmp_fetcher.tasks.metrics_tasks - INFO - Successfully fetched TTM ratios for 10 symbols via bulk endpoint.
+2025-04-16 18:34:38,389 - fmp_fetcher.tasks.metrics_tasks - INFO - Combined TTM data for 10 symbols. Parsing...
+2025-04-16 18:34:38,389 - fmp_fetcher.tasks.metrics_tasks - ERROR - Error parsing TTM metrics for AAPL: parse_key_metrics_ttm() missing 1 required positional argument: 'symbol'
+2025-04-16 18:34:38,389 - fmp_fetcher.tasks.metrics_tasks - ERROR - Error parsing TTM metrics for MSFT: parse_key_metrics_ttm() missing 1 required positional argument: 'symbol'
+2025-04-16 18:34:38,389 - fmp_fetcher.tasks.metrics_tasks - ERROR - Error parsing TTM metrics for GOOGL: parse_key_metrics_ttm() missing 1 required positional argument: 'symbol'
+2025-04-16 18:34:38,389 - fmp_fetcher.tasks.metrics_tasks - ERROR - Error parsing TTM metrics for AMZN: parse_key_metrics_ttm() missing 1 required positional argument: 'symbol'
+2025-04-16 18:34:38,389 - fmp_fetcher.tasks.metrics_tasks - ERROR - Error parsing TTM metrics for JPM: parse_key_metrics_ttm() missing 1 required positional argument: 'symbol'
+2025-04-16 18:34:38,390 - fmp_fetcher.tasks.metrics_tasks - ERROR - Error parsing TTM metrics for JNJ: parse_key_metrics_ttm() missing 1 required positional argument: 'symbol'
+2025-04-16 18:34:38,390 - fmp_fetcher.tasks.metrics_tasks - ERROR - Error parsing TTM metrics for PG: parse_key_metrics_ttm() missing 1 required positional argument: 'symbol'
+2025-04-16 18:34:38,390 - fmp_fetcher.tasks.metrics_tasks - ERROR - Error parsing TTM metrics for XOM: parse_key_metrics_ttm() missing 1 required positional argument: 'symbol'
+2025-04-16 18:34:38,390 - fmp_fetcher.tasks.metrics_tasks - ERROR - Error parsing TTM metrics for DIS: parse_key_metrics_ttm() missing 1 required positional argument: 'symbol'
+2025-04-16 18:34:38,391 - fmp_fetcher.tasks.metrics_tasks - ERROR - Error parsing TTM metrics for CAT: parse_key_metrics_ttm() missing 1 required positional argument: 'symbol'
+2025-04-16 18:34:38,391 - fmp_fetcher.tasks.metrics_tasks - WARNING - No valid TTM metrics could be parsed for any symbols.
+2025-04-16 18:34:38,582 - comprehensive_test - INFO - Task metrics_ttm: [FAILED] [Duration: 16.96s]
+2025-04-16 18:34:39,583 - comprehensive_test - INFO - ------------------------------ TESTING: news ------------------------------
+2025-04-16 18:34:39,588 - comprehensive_test - INFO - Testing stock news for 10 symbols with limit 3
+2025-04-16 18:34:39,588 - fmp_fetcher.tasks.news_releases_tasks - INFO - Starting stock news fetch for 10 symbols.
+2025-04-16 18:34:39,588 - fmp_fetcher.tasks.news_releases_tasks - INFO - Fetching stock news for symbols chunk: AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT, Limit: 3
+2025-04-16 18:34:39,588 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/stock-news with params: {'tickers': 'AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT', 'limit': 3, 'apikey': '***REDACTED***'}
+2025-04-16 18:34:39,694 - fmp_fetcher.tasks.news_releases_tasks - INFO - No news items found for symbols chunk: AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT
+2025-04-16 18:34:39,694 - fmp_fetcher.tasks.news_releases_tasks - WARNING - No valid stock news records could be parsed.
+2025-04-16 18:34:39,695 - comprehensive_test - INFO - Task news: [FAILED] [Duration: 0.11s]
+2025-04-16 18:34:40,695 - comprehensive_test - INFO - 
+==================================================
+2025-04-16 18:34:40,696 - comprehensive_test - INFO - TEST RESULTS SUMMARY
+2025-04-16 18:34:40,697 - comprehensive_test - INFO - ==================================================
+2025-04-16 18:34:40,697 - comprehensive_test - INFO - profiles            : [SUCCESS]
+2025-04-16 18:34:40,698 - comprehensive_test - INFO - prices              : [SUCCESS]
+2025-04-16 18:34:40,698 - comprehensive_test - INFO - metrics_ttm         : [FAILED]
+2025-04-16 18:34:40,698 - comprehensive_test - INFO - news                : [FAILED]
+2025-04-16 18:34:40,699 - comprehensive_test - INFO - 
+Tasks completed: 4
+2025-04-16 18:34:40,699 - comprehensive_test - INFO - Tasks successful: 2
+2025-04-16 18:34:40,699 - comprehensive_test - INFO - Tasks failed: 2
+2025-04-16 18:40:56,162 - comprehensive_test - INFO - Starting comprehensive testing with 10 symbols
+2025-04-16 18:40:56,163 - comprehensive_test - INFO - Selected symbols: ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'JPM', 'JNJ', 'PG', 'XOM', 'DIS', 'CAT']
+2025-04-16 18:40:56,163 - comprehensive_test - INFO - Will test 4 tasks: ['profiles', 'prices', 'metrics_ttm', 'news']
+2025-04-16 18:40:56,163 - comprehensive_test - INFO - ------------------------------ TESTING: profiles ------------------------------
+2025-04-16 18:40:57,310 - root - INFO - Supabase client initialized successfully.
+2025-04-16 18:40:57,324 - comprehensive_test - INFO - Testing profiles for 10 symbols
+2025-04-16 18:40:57,325 - fmp_fetcher.tasks.stock_data_tasks - INFO - Starting profile fetch for 10 symbols.
+2025-04-16 18:40:57,325 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/profile-bulk with params: {'part': 0, 'apikey': '***REDACTED***'}
+2025-04-16 18:41:00,287 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/profile-bulk. Attempting CSV parsing.
+2025-04-16 18:41:00,584 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 21290 rows
+2025-04-16 18:41:00,606 - fmp_fetcher.tasks.stock_data_tasks - INFO - Found 10 profiles in bulk data matching requested symbols.
+2025-04-16 18:41:01,064 - httpx - INFO - HTTP Request: POST https://fzluwxuxvegdonfumsnz.supabase.co/rest/v1/stocks?columns=%22is_etf%22%2C%22sector%22%2C%22exchange%22%2C%22employees%22%2C%22ceo%22%2C%22hq_address%22%2C%22is_actively_trading%22%2C%22company_name%22%2C%22industry%22%2C%22website%22%2C%22description%22%2C%22ipo_date%22%2C%22is_fund%22%2C%22beta%22%2C%22market_cap%22%2C%22cik%22%2C%22symbol%22%2C%22country%22%2C%22exchange_short_name%22 "HTTP/2 200 OK"
+2025-04-16 18:41:01,068 - fmp_fetcher.clients.db_client - INFO - Successfully upserted 10 record(s) into 'stocks'.
+2025-04-16 18:41:01,068 - fmp_fetcher.tasks.stock_data_tasks - INFO - Successfully processed 10 out of 10 matched profiles.
+2025-04-16 18:41:01,086 - comprehensive_test - INFO - Task profiles: [SUCCESS] [Duration: 4.92s]
+2025-04-16 18:41:02,087 - comprehensive_test - INFO - ------------------------------ TESTING: prices ------------------------------
+2025-04-16 18:41:02,088 - comprehensive_test - INFO - Testing daily prices for 10 symbols with date 2025-04-15
+2025-04-16 18:41:02,088 - fmp_fetcher.tasks.stock_data_tasks - INFO - Starting EOD price fetch for 10 symbols for date 2025-04-15.
+2025-04-16 18:41:02,088 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/eod-bulk with params: {'date': '2025-04-15', 'apikey': '***REDACTED***'}
+2025-04-16 18:41:05,882 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/eod-bulk. Attempting CSV parsing.
+2025-04-16 18:41:05,986 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 67933 rows
+2025-04-16 18:41:05,989 - fmp_fetcher.tasks.stock_data_tasks - INFO - Received 67933 EOD records from bulk API for 2025-04-15. Parsing target symbols...
+2025-04-16 18:41:05,996 - fmp_fetcher.utils.parsing - INFO - Parsed 10 daily price records for 10 target symbols from bulk data.
+2025-04-16 18:41:05,997 - fmp_fetcher.tasks.stock_data_tasks - INFO - Successfully parsed 10 EOD price records for target symbols.
+2025-04-16 18:41:06,082 - httpx - INFO - HTTP Request: POST https://fzluwxuxvegdonfumsnz.supabase.co/rest/v1/stock_prices_daily?columns=%22date%22%2C%22low%22%2C%22volume%22%2C%22unadjusted_volume%22%2C%22high%22%2C%22change_percent%22%2C%22adj_close%22%2C%22vwap%22%2C%22label%22%2C%22close%22%2C%22symbol%22%2C%22change%22%2C%22change_over_time%22%2C%22open%22 "HTTP/2 409 Conflict"
+2025-04-16 18:41:06,083 - fmp_fetcher.clients.db_client - ERROR - Supabase APIError during upsert to 'stock_prices_daily': duplicate key value violates unique constraint "stock_prices_daily_symbol_date_key" (Code: 23505, Details: Key (symbol, date)=(GOOGL, 2025-04-15) already exists., Hint: None)
+Traceback (most recent call last):
+  File "C:\Users\pedro\Downloads\swipefolio-main\fmp_fetcher\clients\db_client.py", line 67, in upsert_data
+    response = supabase.table(table_name).upsert(processed_data).execute()
+  File "C:\Users\pedro\AppData\Local\Programs\Python\Python313\Lib\site-packages\postgrest\_sync\request_builder.py", line 78, in execute
+    raise APIError(r.json())
+postgrest.exceptions.APIError: {'code': '23505', 'details': 'Key (symbol, date)=(GOOGL, 2025-04-15) already exists.', 'hint': None, 'message': 'duplicate key value violates unique constraint "stock_prices_daily_symbol_date_key"'}
+2025-04-16 18:41:06,086 - fmp_fetcher.tasks.stock_data_tasks - ERROR - Failed to upsert EOD price records into the database for 2025-04-15.
+2025-04-16 18:41:06,095 - comprehensive_test - INFO - Task prices: [FAILED] [Duration: 4.01s]
+2025-04-16 18:41:07,096 - comprehensive_test - INFO - ------------------------------ TESTING: metrics_ttm ------------------------------
+2025-04-16 18:41:07,099 - comprehensive_test - INFO - Testing TTM metrics for 10 symbols
+2025-04-16 18:41:07,100 - fmp_fetcher.tasks.metrics_tasks - INFO - Starting Bulk TTM key metrics/ratios fetch for 10 symbols.
+2025-04-16 18:41:07,100 - fmp_fetcher.tasks.metrics_tasks - INFO - Fetching data from /key-metrics-ttm-bulk...
+2025-04-16 18:41:07,100 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/key-metrics-ttm-bulk with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:41:11,838 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/key-metrics-ttm-bulk. Attempting CSV parsing.
+2025-04-16 18:41:12,449 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 66866 rows
+2025-04-16 18:41:12,500 - fmp_fetcher.tasks.metrics_tasks - INFO - Successfully fetched TTM metrics for 10 symbols via bulk endpoint.
+2025-04-16 18:41:12,500 - fmp_fetcher.tasks.metrics_tasks - INFO - Fetching data from /ratios-ttm-bulk...
+2025-04-16 18:41:12,500 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/ratios-ttm-bulk with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:41:19,703 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/ratios-ttm-bulk. Attempting CSV parsing.
+2025-04-16 18:41:20,457 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 66866 rows
+2025-04-16 18:41:20,511 - fmp_fetcher.tasks.metrics_tasks - INFO - Successfully fetched TTM ratios for 10 symbols via bulk endpoint.
+2025-04-16 18:41:20,512 - fmp_fetcher.tasks.metrics_tasks - INFO - Combined TTM data for 10 symbols. Parsing...
+2025-04-16 18:41:20,512 - fmp_fetcher.tasks.metrics_tasks - INFO - Successfully parsed TTM metrics for 10 symbols. Upserting to database...
+2025-04-16 18:41:20,725 - httpx - INFO - HTTP Request: POST https://fzluwxuxvegdonfumsnz.supabase.co/rest/v1/key_metrics_ttm?columns=%22company_equity_multiplier_ttm%22%2C%22receivables_turnover_ttm%22%2C%22current_ratio_ttm%22%2C%22fixed_asset_turnover_ttm%22%2C%22ptb_ratio_ttm%22%2C%22dividend_yield_ttm%22%2C%22capital_expenditure_coverage_ratio_ttm%22%2C%22tangible_asset_value_ttm%22%2C%22days_payables_outstanding_ttm%22%2C%22free_cash_flow_yield_ttm%22%2C%22net_income_per_share_ttm%22%2C%22cash_flow_to_debt_ratio_ttm%22%2C%22revenue_per_share_ttm%22%2C%22ev_to_sales_ttm%22%2C%22capex_to_operating_cash_flow_ttm%22%2C%22pfcf_ratio_ttm%22%2C%22days_sales_outstanding_ttm%22%2C%22interest_coverage_ttm%22%2C%22graham_net_net_ttm%22%2C%22operating_profit_margin_ttm%22%2C%22net_current_asset_value_ttm%22%2C%22working_capital_ttm%22%2C%22research_and_developement_to_revenue_ttm%22%2C%22interest_debt_per_share_ttm%22%2C%22shareholders_equity_per_share_ttm%22%2C%22dividend_yield_percentage_ttm%22%2C%22long_term_debt_to_capitalization_ttm%22%2C%22invested_capital_ttm%22%2C%22average_inventory_ttm%22%2C%22ev_to_operating_cash_flow_ttm%22%2C%22pretax_profit_margin_ttm%22%2C%22income_quality_ttm%22%2C%22asset_turnover_ttm%22%2C%22free_cash_flow_operating_cash_flow_ratio_ttm%22%2C%22market_cap_ttm%22%2C%22pb_ratio_ttm%22%2C%22cash_flow_coverage_ratios_ttm%22%2C%22return_on_capital_employed_ttm%22%2C%22sales_general_and_administrative_to_revenue_ttm%22%2C%22book_value_per_share_ttm%22%2C%22symbol%22%2C%22intangibles_to_total_assets_ttm%22%2C%22price_to_sales_ratio_ttm%22%2C%22enterprise_value_ttm%22%2C%22payables_turnover_ttm%22%2C%22ev_to_free_cash_flow_ttm%22%2C%22dividend_paid_and_capex_coverage_ratio_ttm%22%2C%22inventory_turnover_ttm%22%2C%22roe_ttm%22%2C%22earnings_yield_ttm%22%2C%22capex_per_share_ttm%22%2C%22return_on_tangible_assets_ttm%22%2C%22date_calculated%22%2C%22pe_ratio_ttm%22%2C%22tangible_book_value_per_share_ttm%22%2C%22cash_per_share_ttm%22%2C%22return_on_assets_ttm%22%2C%22free_cash_flow_per_share_ttm%22%2C%22operating_cash_flow_per_share_ttm%22%2C%22debt_to_equity_ttm%22%2C%22enterprise_value_over_ebitdat_tm%22%2C%22total_debt_to_capitalization_ttm%22%2C%22graham_number_ttm%22%2C%22net_debt_to_ebitdat_tm%22%2C%22debt_to_assets_ttm%22%2C%22capex_to_depreciation_ttm%22%2C%22capex_to_revenue_ttm%22%2C%22operating_cash_flow_sales_ratio_ttm%22%2C%22stock_based_compensation_to_revenue_ttm%22%2C%22roic_ttm%22%2C%22days_of_inventory_on_hand_ttm%22%2C%22net_profit_margin_ttm%22%2C%22debt_ratio_ttm%22%2C%22payout_ratio_ttm%22%2C%22average_payables_ttm%22%2C%22average_receivables_ttm%22%2C%22gross_profit_margin_ttm%22%2C%22short_term_coverage_ratios_ttm%22%2C%22pocfratio_ttm%22 "HTTP/2 201 Created"
+2025-04-16 18:41:20,736 - fmp_fetcher.clients.db_client - INFO - Successfully upserted 10 record(s) into 'key_metrics_ttm'.
+2025-04-16 18:41:20,737 - fmp_fetcher.tasks.metrics_tasks - INFO - Successfully upserted TTM metrics for 10 symbols.
+2025-04-16 18:41:20,920 - comprehensive_test - INFO - Task metrics_ttm: [SUCCESS] [Duration: 13.82s]
+2025-04-16 18:41:21,921 - comprehensive_test - INFO - ------------------------------ TESTING: news ------------------------------
+2025-04-16 18:41:21,923 - comprehensive_test - INFO - Testing stock news for 10 symbols with limit 3
+2025-04-16 18:41:21,923 - fmp_fetcher.tasks.news_releases_tasks - INFO - Starting stock news fetch for 10 symbols.
+2025-04-16 18:41:21,924 - fmp_fetcher.tasks.news_releases_tasks - INFO - Fetching stock news for symbols chunk: AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT, Limit: 3
+2025-04-16 18:41:21,924 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/stock-news with params: {'tickers': 'AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT', 'limit': 3, 'apikey': '***REDACTED***'}
+2025-04-16 18:41:22,044 - fmp_fetcher.tasks.news_releases_tasks - INFO - No news items found for symbols chunk: AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT
+2025-04-16 18:41:22,045 - fmp_fetcher.tasks.news_releases_tasks - WARNING - No valid stock news records could be parsed.
+2025-04-16 18:41:22,045 - comprehensive_test - INFO - Task news: [FAILED] [Duration: 0.12s]
+2025-04-16 18:41:23,046 - comprehensive_test - INFO - 
+==================================================
+2025-04-16 18:41:23,046 - comprehensive_test - INFO - TEST RESULTS SUMMARY
+2025-04-16 18:41:23,046 - comprehensive_test - INFO - ==================================================
+2025-04-16 18:41:23,046 - comprehensive_test - INFO - profiles            : [SUCCESS]
+2025-04-16 18:41:23,047 - comprehensive_test - INFO - prices              : [FAILED]
+2025-04-16 18:41:23,047 - comprehensive_test - INFO - metrics_ttm         : [SUCCESS]
+2025-04-16 18:41:23,047 - comprehensive_test - INFO - news                : [FAILED]
+2025-04-16 18:41:23,047 - comprehensive_test - INFO - 
+Tasks completed: 4
+2025-04-16 18:41:23,047 - comprehensive_test - INFO - Tasks successful: 2
+2025-04-16 18:41:23,047 - comprehensive_test - INFO - Tasks failed: 2
+2025-04-16 18:42:56,538 - comprehensive_test - INFO - Starting comprehensive testing with 10 symbols
+2025-04-16 18:42:56,538 - comprehensive_test - INFO - Selected symbols: ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'JPM', 'JNJ', 'PG', 'XOM', 'DIS', 'CAT']
+2025-04-16 18:42:56,538 - comprehensive_test - INFO - Will test 4 tasks: ['profiles', 'prices', 'metrics_ttm', 'news']
+2025-04-16 18:42:56,538 - comprehensive_test - INFO - ------------------------------ TESTING: profiles ------------------------------
+2025-04-16 18:42:57,391 - root - INFO - Supabase client initialized successfully.
+2025-04-16 18:42:57,395 - comprehensive_test - INFO - Testing profiles for 10 symbols
+2025-04-16 18:42:57,395 - fmp_fetcher.tasks.stock_data_tasks - INFO - Starting profile fetch for 10 symbols.
+2025-04-16 18:42:57,395 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/profile-bulk with params: {'part': 0, 'apikey': '***REDACTED***'}
+2025-04-16 18:42:58,520 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/profile-bulk. Attempting CSV parsing.
+2025-04-16 18:42:58,862 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 21290 rows
+2025-04-16 18:42:58,898 - fmp_fetcher.tasks.stock_data_tasks - INFO - Found 10 profiles in bulk data matching requested symbols.
+2025-04-16 18:42:59,356 - httpx - INFO - HTTP Request: POST https://fzluwxuxvegdonfumsnz.supabase.co/rest/v1/stocks?columns=%22description%22%2C%22exchange%22%2C%22exchange_short_name%22%2C%22ipo_date%22%2C%22is_etf%22%2C%22beta%22%2C%22is_actively_trading%22%2C%22employees%22%2C%22is_fund%22%2C%22ceo%22%2C%22hq_address%22%2C%22country%22%2C%22symbol%22%2C%22cik%22%2C%22market_cap%22%2C%22industry%22%2C%22sector%22%2C%22website%22%2C%22company_name%22 "HTTP/2 200 OK"
+2025-04-16 18:42:59,361 - fmp_fetcher.clients.db_client - INFO - Successfully upserted 10 record(s) into 'stocks'.
+2025-04-16 18:42:59,361 - fmp_fetcher.tasks.stock_data_tasks - INFO - Successfully processed 10 out of 10 matched profiles.
+2025-04-16 18:42:59,379 - comprehensive_test - INFO - Task profiles: [SUCCESS] [Duration: 2.84s]
+2025-04-16 18:43:00,379 - comprehensive_test - INFO - ------------------------------ TESTING: prices ------------------------------
+2025-04-16 18:43:00,380 - comprehensive_test - INFO - Testing daily prices for 10 symbols with date 2025-04-15
+2025-04-16 18:43:00,380 - fmp_fetcher.tasks.stock_data_tasks - INFO - Starting EOD price fetch for 10 symbols for date 2025-04-15.
+2025-04-16 18:43:00,381 - fmp_fetcher.tasks.stock_data_tasks - INFO - Trying price endpoint: /eod-bulk
+2025-04-16 18:43:00,381 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/eod-bulk with params: {'date': '2025-04-15', 'apikey': '***REDACTED***'}
+2025-04-16 18:43:01,168 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/eod-bulk. Attempting CSV parsing.
+2025-04-16 18:43:01,276 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 67933 rows
+2025-04-16 18:43:01,278 - fmp_fetcher.tasks.stock_data_tasks - INFO - Successfully fetched prices using endpoint: /eod-bulk
+2025-04-16 18:43:01,278 - fmp_fetcher.tasks.stock_data_tasks - INFO - Received 67933 EOD records from bulk API for 2025-04-15. Parsing target symbols...
+2025-04-16 18:43:01,284 - fmp_fetcher.utils.parsing - INFO - Parsed 10 daily price records for 10 target symbols from bulk data.
+2025-04-16 18:43:01,284 - fmp_fetcher.tasks.stock_data_tasks - INFO - Successfully parsed 10 EOD price records for target symbols.
+2025-04-16 18:43:01,358 - httpx - INFO - HTTP Request: POST https://fzluwxuxvegdonfumsnz.supabase.co/rest/v1/stock_prices_daily?columns=%22vwap%22%2C%22close%22%2C%22volume%22%2C%22symbol%22%2C%22adj_close%22%2C%22open%22%2C%22change%22%2C%22high%22%2C%22unadjusted_volume%22%2C%22change_percent%22%2C%22label%22%2C%22date%22%2C%22low%22%2C%22change_over_time%22 "HTTP/2 409 Conflict"
+2025-04-16 18:43:01,360 - fmp_fetcher.clients.db_client - ERROR - Supabase APIError during upsert to 'stock_prices_daily': duplicate key value violates unique constraint "stock_prices_daily_symbol_date_key" (Code: 23505, Details: Key (symbol, date)=(GOOGL, 2025-04-15) already exists., Hint: None)
+Traceback (most recent call last):
+  File "C:\Users\pedro\Downloads\swipefolio-main\fmp_fetcher\clients\db_client.py", line 67, in upsert_data
+    response = supabase.table(table_name).upsert(processed_data).execute()
+  File "C:\Users\pedro\AppData\Local\Programs\Python\Python313\Lib\site-packages\postgrest\_sync\request_builder.py", line 78, in execute
+    raise APIError(r.json())
+postgrest.exceptions.APIError: {'code': '23505', 'details': 'Key (symbol, date)=(GOOGL, 2025-04-15) already exists.', 'hint': None, 'message': 'duplicate key value violates unique constraint "stock_prices_daily_symbol_date_key"'}
+2025-04-16 18:43:01,364 - fmp_fetcher.tasks.stock_data_tasks - ERROR - Failed to upsert EOD price records into the database for 2025-04-15.
+2025-04-16 18:43:01,375 - comprehensive_test - INFO - Task prices: [FAILED] [Duration: 1.00s]
+2025-04-16 18:43:02,376 - comprehensive_test - INFO - ------------------------------ TESTING: metrics_ttm ------------------------------
+2025-04-16 18:43:02,383 - comprehensive_test - INFO - Testing TTM metrics for 10 symbols
+2025-04-16 18:43:02,384 - fmp_fetcher.tasks.metrics_tasks - INFO - Starting Bulk TTM key metrics/ratios fetch for 10 symbols.
+2025-04-16 18:43:02,385 - fmp_fetcher.tasks.metrics_tasks - INFO - Fetching data from /key-metrics-ttm-bulk...
+2025-04-16 18:43:02,385 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/key-metrics-ttm-bulk with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:43:09,233 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/key-metrics-ttm-bulk. Attempting CSV parsing.
+2025-04-16 18:43:09,764 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 66866 rows
+2025-04-16 18:43:09,798 - fmp_fetcher.tasks.metrics_tasks - INFO - Successfully fetched TTM metrics for 10 symbols via bulk endpoint.
+2025-04-16 18:43:09,799 - fmp_fetcher.tasks.metrics_tasks - INFO - Fetching data from /ratios-ttm-bulk...
+2025-04-16 18:43:09,799 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/ratios-ttm-bulk with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:43:16,520 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/ratios-ttm-bulk. Attempting CSV parsing.
+2025-04-16 18:43:17,351 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 66866 rows
+2025-04-16 18:43:17,403 - fmp_fetcher.tasks.metrics_tasks - INFO - Successfully fetched TTM ratios for 10 symbols via bulk endpoint.
+2025-04-16 18:43:17,404 - fmp_fetcher.tasks.metrics_tasks - INFO - Combined TTM data for 10 symbols. Parsing...
+2025-04-16 18:43:17,404 - fmp_fetcher.tasks.metrics_tasks - INFO - Successfully parsed TTM metrics for 10 symbols. Upserting to database...
+2025-04-16 18:43:17,568 - httpx - INFO - HTTP Request: POST https://fzluwxuxvegdonfumsnz.supabase.co/rest/v1/key_metrics_ttm?columns=%22dividend_yield_percentage_ttm%22%2C%22debt_to_equity_ttm%22%2C%22tangible_asset_value_ttm%22%2C%22gross_profit_margin_ttm%22%2C%22capex_to_revenue_ttm%22%2C%22interest_debt_per_share_ttm%22%2C%22current_ratio_ttm%22%2C%22free_cash_flow_operating_cash_flow_ratio_ttm%22%2C%22net_profit_margin_ttm%22%2C%22ev_to_operating_cash_flow_ttm%22%2C%22sales_general_and_administrative_to_revenue_ttm%22%2C%22cash_flow_to_debt_ratio_ttm%22%2C%22capital_expenditure_coverage_ratio_ttm%22%2C%22debt_ratio_ttm%22%2C%22research_and_developement_to_revenue_ttm%22%2C%22return_on_capital_employed_ttm%22%2C%22roe_ttm%22%2C%22book_value_per_share_ttm%22%2C%22revenue_per_share_ttm%22%2C%22return_on_tangible_assets_ttm%22%2C%22capex_per_share_ttm%22%2C%22ptb_ratio_ttm%22%2C%22capex_to_depreciation_ttm%22%2C%22asset_turnover_ttm%22%2C%22dividend_yield_ttm%22%2C%22average_receivables_ttm%22%2C%22interest_coverage_ttm%22%2C%22tangible_book_value_per_share_ttm%22%2C%22pfcf_ratio_ttm%22%2C%22return_on_assets_ttm%22%2C%22roic_ttm%22%2C%22free_cash_flow_yield_ttm%22%2C%22pretax_profit_margin_ttm%22%2C%22pe_ratio_ttm%22%2C%22days_of_inventory_on_hand_ttm%22%2C%22payables_turnover_ttm%22%2C%22average_inventory_ttm%22%2C%22symbol%22%2C%22graham_net_net_ttm%22%2C%22graham_number_ttm%22%2C%22free_cash_flow_per_share_ttm%22%2C%22payout_ratio_ttm%22%2C%22date_calculated%22%2C%22operating_cash_flow_sales_ratio_ttm%22%2C%22pocfratio_ttm%22%2C%22ev_to_free_cash_flow_ttm%22%2C%22invested_capital_ttm%22%2C%22short_term_coverage_ratios_ttm%22%2C%22enterprise_value_over_ebitdat_tm%22%2C%22pb_ratio_ttm%22%2C%22days_sales_outstanding_ttm%22%2C%22company_equity_multiplier_ttm%22%2C%22operating_cash_flow_per_share_ttm%22%2C%22net_debt_to_ebitdat_tm%22%2C%22cash_per_share_ttm%22%2C%22ev_to_sales_ttm%22%2C%22receivables_turnover_ttm%22%2C%22total_debt_to_capitalization_ttm%22%2C%22average_payables_ttm%22%2C%22cash_flow_coverage_ratios_ttm%22%2C%22net_income_per_share_ttm%22%2C%22net_current_asset_value_ttm%22%2C%22capex_to_operating_cash_flow_ttm%22%2C%22long_term_debt_to_capitalization_ttm%22%2C%22working_capital_ttm%22%2C%22operating_profit_margin_ttm%22%2C%22inventory_turnover_ttm%22%2C%22days_payables_outstanding_ttm%22%2C%22income_quality_ttm%22%2C%22dividend_paid_and_capex_coverage_ratio_ttm%22%2C%22debt_to_assets_ttm%22%2C%22market_cap_ttm%22%2C%22stock_based_compensation_to_revenue_ttm%22%2C%22fixed_asset_turnover_ttm%22%2C%22price_to_sales_ratio_ttm%22%2C%22earnings_yield_ttm%22%2C%22shareholders_equity_per_share_ttm%22%2C%22intangibles_to_total_assets_ttm%22%2C%22enterprise_value_ttm%22 "HTTP/2 200 OK"
+2025-04-16 18:43:17,572 - fmp_fetcher.clients.db_client - INFO - Successfully upserted 10 record(s) into 'key_metrics_ttm'.
+2025-04-16 18:43:17,572 - fmp_fetcher.tasks.metrics_tasks - INFO - Successfully upserted TTM metrics for 10 symbols.
+2025-04-16 18:43:17,738 - comprehensive_test - INFO - Task metrics_ttm: [SUCCESS] [Duration: 15.36s]
+2025-04-16 18:43:18,738 - comprehensive_test - INFO - ------------------------------ TESTING: news ------------------------------
+2025-04-16 18:43:18,744 - comprehensive_test - INFO - Testing stock news for 10 symbols with limit 3
+2025-04-16 18:43:18,745 - fmp_fetcher.tasks.news_releases_tasks - INFO - Starting stock news fetch for 10 symbols.
+2025-04-16 18:43:18,745 - fmp_fetcher.tasks.news_releases_tasks - INFO - Fetching stock news for symbols chunk: AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT, Limit: 3
+2025-04-16 18:43:18,745 - fmp_fetcher.tasks.news_releases_tasks - INFO - Trying news endpoint: /api/v3/stock_news with tickers parameter
+2025-04-16 18:43:18,745 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/api/v3/stock_news with params: {'tickers': 'AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT', 'limit': 3, 'apikey': '***REDACTED***'}
+2025-04-16 18:43:18,860 - fmp_fetcher.tasks.news_releases_tasks - INFO - Trying news endpoint: /stock-news with tickers parameter
+2025-04-16 18:43:18,860 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/stock-news with params: {'tickers': 'AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT', 'limit': 3, 'apikey': '***REDACTED***'}
+2025-04-16 18:43:18,991 - fmp_fetcher.tasks.news_releases_tasks - INFO - Trying news endpoint: /stock_news with symbols parameter
+2025-04-16 18:43:18,992 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/stock_news with params: {'symbols': 'AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT', 'limit': 3, 'apikey': '***REDACTED***'}
+2025-04-16 18:43:19,094 - fmp_fetcher.tasks.news_releases_tasks - INFO - Trying news endpoint: /api/v4/company-news with symbol parameter
+2025-04-16 18:43:19,094 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/api/v4/company-news with params: {'symbol': 'AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT', 'limit': 3, 'apikey': '***REDACTED***'}
+2025-04-16 18:43:19,203 - fmp_fetcher.tasks.news_releases_tasks - INFO - No news items found for symbols chunk: AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT
+2025-04-16 18:43:19,204 - fmp_fetcher.tasks.news_releases_tasks - WARNING - No valid stock news records could be parsed.
+2025-04-16 18:43:19,204 - comprehensive_test - INFO - Task news: [FAILED] [Duration: 0.46s]
+2025-04-16 18:43:20,205 - comprehensive_test - INFO - 
+==================================================
+2025-04-16 18:43:20,205 - comprehensive_test - INFO - TEST RESULTS SUMMARY
+2025-04-16 18:43:20,206 - comprehensive_test - INFO - ==================================================
+2025-04-16 18:43:20,206 - comprehensive_test - INFO - profiles            : [SUCCESS]
+2025-04-16 18:43:20,206 - comprehensive_test - INFO - prices              : [FAILED]
+2025-04-16 18:43:20,206 - comprehensive_test - INFO - metrics_ttm         : [SUCCESS]
+2025-04-16 18:43:20,207 - comprehensive_test - INFO - news                : [FAILED]
+2025-04-16 18:43:20,207 - comprehensive_test - INFO - 
+Tasks completed: 4
+2025-04-16 18:43:20,207 - comprehensive_test - INFO - Tasks successful: 2
+2025-04-16 18:43:20,207 - comprehensive_test - INFO - Tasks failed: 2
+2025-04-16 18:46:05,034 - comprehensive_test - INFO - Starting comprehensive testing with 10 symbols
+2025-04-16 18:46:05,034 - comprehensive_test - INFO - Selected symbols: ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'JPM', 'JNJ', 'PG', 'XOM', 'DIS', 'CAT']
+2025-04-16 18:46:05,035 - comprehensive_test - INFO - Will test 4 tasks: ['profiles', 'prices', 'metrics_ttm', 'news']
+2025-04-16 18:46:05,035 - comprehensive_test - INFO - ------------------------------ TESTING: profiles ------------------------------
+2025-04-16 18:46:05,865 - root - INFO - Supabase client initialized successfully.
+2025-04-16 18:46:05,869 - comprehensive_test - INFO - Testing profiles for 10 symbols
+2025-04-16 18:46:05,869 - fmp_fetcher.tasks.stock_data_tasks - INFO - Starting profile fetch for 10 symbols.
+2025-04-16 18:46:05,869 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/profile-bulk with params: {'part': 0, 'apikey': '***REDACTED***'}
+2025-04-16 18:46:10,736 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/profile-bulk. Attempting CSV parsing.
+2025-04-16 18:46:11,023 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 21290 rows
+2025-04-16 18:46:11,044 - fmp_fetcher.tasks.stock_data_tasks - INFO - Found 10 profiles in bulk data matching requested symbols.
+2025-04-16 18:46:11,368 - httpx - INFO - HTTP Request: POST https://fzluwxuxvegdonfumsnz.supabase.co/rest/v1/stocks?columns=%22employees%22%2C%22market_cap%22%2C%22hq_address%22%2C%22website%22%2C%22beta%22%2C%22description%22%2C%22ipo_date%22%2C%22is_fund%22%2C%22is_etf%22%2C%22sector%22%2C%22ceo%22%2C%22company_name%22%2C%22country%22%2C%22symbol%22%2C%22exchange_short_name%22%2C%22is_actively_trading%22%2C%22exchange%22%2C%22industry%22%2C%22cik%22 "HTTP/2 200 OK"
+2025-04-16 18:46:11,371 - fmp_fetcher.clients.db_client - INFO - Successfully upserted 10 record(s) into 'stocks'.
+2025-04-16 18:46:11,372 - fmp_fetcher.tasks.stock_data_tasks - INFO - Successfully processed 10 out of 10 matched profiles.
+2025-04-16 18:46:11,389 - comprehensive_test - INFO - Task profiles: [SUCCESS] [Duration: 6.35s]
+2025-04-16 18:46:12,390 - comprehensive_test - INFO - ------------------------------ TESTING: prices ------------------------------
+2025-04-16 18:46:12,391 - comprehensive_test - INFO - Testing daily prices for 10 symbols with date 2025-04-15
+2025-04-16 18:46:12,391 - fmp_fetcher.tasks.stock_data_tasks - INFO - Starting EOD price fetch for 10 symbols for date 2025-04-15.
+2025-04-16 18:46:12,392 - fmp_fetcher.tasks.stock_data_tasks - INFO - Trying price endpoint: /eod-bulk
+2025-04-16 18:46:12,392 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/eod-bulk with params: {'date': '2025-04-15', 'apikey': '***REDACTED***'}
+2025-04-16 18:46:12,875 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/eod-bulk. Attempting CSV parsing.
+2025-04-16 18:46:12,975 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 67933 rows
+2025-04-16 18:46:12,976 - fmp_fetcher.tasks.stock_data_tasks - INFO - Successfully fetched prices using endpoint: /eod-bulk
+2025-04-16 18:46:12,977 - fmp_fetcher.tasks.stock_data_tasks - INFO - Received 67933 EOD records from bulk API for 2025-04-15. Parsing target symbols...
+2025-04-16 18:46:12,983 - fmp_fetcher.utils.parsing - INFO - Parsed 10 daily price records for 10 target symbols from bulk data.
+2025-04-16 18:46:12,983 - fmp_fetcher.tasks.stock_data_tasks - INFO - Successfully parsed 10 EOD price records for target symbols.
+2025-04-16 18:46:12,983 - fmp_fetcher.clients.db_client - INFO - Performing upsert on stock_prices_daily with symbol,date conflict handling
+2025-04-16 18:46:13,088 - httpx - INFO - HTTP Request: POST https://fzluwxuxvegdonfumsnz.supabase.co/rest/v1/stock_prices_daily?on_conflict=symbol%2Cdate&columns=%22unadjusted_volume%22%2C%22change_percent%22%2C%22low%22%2C%22vwap%22%2C%22adj_close%22%2C%22volume%22%2C%22close%22%2C%22date%22%2C%22symbol%22%2C%22open%22%2C%22change%22%2C%22high%22%2C%22change_over_time%22%2C%22label%22 "HTTP/2 200 OK"
+2025-04-16 18:46:13,090 - fmp_fetcher.clients.db_client - INFO - Successfully upserted 10 record(s) into 'stock_prices_daily'.
+2025-04-16 18:46:13,091 - fmp_fetcher.tasks.stock_data_tasks - INFO - Successfully upserted 10 EOD price records into the database for 2025-04-15.
+2025-04-16 18:46:13,100 - comprehensive_test - INFO - Task prices: [SUCCESS] [Duration: 0.71s]
+2025-04-16 18:46:14,101 - comprehensive_test - INFO - ------------------------------ TESTING: metrics_ttm ------------------------------
+2025-04-16 18:46:14,103 - comprehensive_test - INFO - Testing TTM metrics for 10 symbols
+2025-04-16 18:46:14,104 - fmp_fetcher.tasks.metrics_tasks - INFO - Starting Bulk TTM key metrics/ratios fetch for 10 symbols.
+2025-04-16 18:46:14,104 - fmp_fetcher.tasks.metrics_tasks - INFO - Fetching data from /key-metrics-ttm-bulk...
+2025-04-16 18:46:14,105 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/key-metrics-ttm-bulk with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:46:19,024 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/key-metrics-ttm-bulk. Attempting CSV parsing.
+2025-04-16 18:46:19,572 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 66866 rows
+2025-04-16 18:46:19,620 - fmp_fetcher.tasks.metrics_tasks - INFO - Successfully fetched TTM metrics for 10 symbols via bulk endpoint.
+2025-04-16 18:46:19,621 - fmp_fetcher.tasks.metrics_tasks - INFO - Fetching data from /ratios-ttm-bulk...
+2025-04-16 18:46:19,621 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/ratios-ttm-bulk with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:46:26,504 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/ratios-ttm-bulk. Attempting CSV parsing.
+2025-04-16 18:46:27,259 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 66866 rows
+2025-04-16 18:46:27,326 - fmp_fetcher.tasks.metrics_tasks - INFO - Successfully fetched TTM ratios for 10 symbols via bulk endpoint.
+2025-04-16 18:46:27,326 - fmp_fetcher.tasks.metrics_tasks - INFO - Combined TTM data for 10 symbols. Parsing...
+2025-04-16 18:46:27,327 - fmp_fetcher.tasks.metrics_tasks - INFO - Successfully parsed TTM metrics for 10 symbols. Upserting to database...
+2025-04-16 18:46:27,487 - httpx - INFO - HTTP Request: POST https://fzluwxuxvegdonfumsnz.supabase.co/rest/v1/key_metrics_ttm?columns=%22days_payables_outstanding_ttm%22%2C%22dividend_yield_ttm%22%2C%22pb_ratio_ttm%22%2C%22revenue_per_share_ttm%22%2C%22capital_expenditure_coverage_ratio_ttm%22%2C%22interest_coverage_ttm%22%2C%22capex_to_depreciation_ttm%22%2C%22average_receivables_ttm%22%2C%22capex_to_revenue_ttm%22%2C%22invested_capital_ttm%22%2C%22payables_turnover_ttm%22%2C%22working_capital_ttm%22%2C%22capex_per_share_ttm%22%2C%22return_on_assets_ttm%22%2C%22debt_ratio_ttm%22%2C%22total_debt_to_capitalization_ttm%22%2C%22tangible_book_value_per_share_ttm%22%2C%22pe_ratio_ttm%22%2C%22ev_to_free_cash_flow_ttm%22%2C%22days_sales_outstanding_ttm%22%2C%22ev_to_sales_ttm%22%2C%22return_on_capital_employed_ttm%22%2C%22book_value_per_share_ttm%22%2C%22pfcf_ratio_ttm%22%2C%22market_cap_ttm%22%2C%22cash_flow_to_debt_ratio_ttm%22%2C%22shareholders_equity_per_share_ttm%22%2C%22capex_to_operating_cash_flow_ttm%22%2C%22operating_profit_margin_ttm%22%2C%22short_term_coverage_ratios_ttm%22%2C%22free_cash_flow_operating_cash_flow_ratio_ttm%22%2C%22cash_flow_coverage_ratios_ttm%22%2C%22pretax_profit_margin_ttm%22%2C%22graham_net_net_ttm%22%2C%22stock_based_compensation_to_revenue_ttm%22%2C%22ev_to_operating_cash_flow_ttm%22%2C%22net_profit_margin_ttm%22%2C%22enterprise_value_ttm%22%2C%22date_calculated%22%2C%22payout_ratio_ttm%22%2C%22operating_cash_flow_per_share_ttm%22%2C%22earnings_yield_ttm%22%2C%22long_term_debt_to_capitalization_ttm%22%2C%22roe_ttm%22%2C%22intangibles_to_total_assets_ttm%22%2C%22research_and_developement_to_revenue_ttm%22%2C%22net_current_asset_value_ttm%22%2C%22net_income_per_share_ttm%22%2C%22enterprise_value_over_ebitdat_tm%22%2C%22symbol%22%2C%22return_on_tangible_assets_ttm%22%2C%22fixed_asset_turnover_ttm%22%2C%22tangible_asset_value_ttm%22%2C%22average_inventory_ttm%22%2C%22net_debt_to_ebitdat_tm%22%2C%22sales_general_and_administrative_to_revenue_ttm%22%2C%22free_cash_flow_yield_ttm%22%2C%22asset_turnover_ttm%22%2C%22debt_to_assets_ttm%22%2C%22operating_cash_flow_sales_ratio_ttm%22%2C%22debt_to_equity_ttm%22%2C%22days_of_inventory_on_hand_ttm%22%2C%22price_to_sales_ratio_ttm%22%2C%22inventory_turnover_ttm%22%2C%22company_equity_multiplier_ttm%22%2C%22dividend_yield_percentage_ttm%22%2C%22graham_number_ttm%22%2C%22average_payables_ttm%22%2C%22pocfratio_ttm%22%2C%22cash_per_share_ttm%22%2C%22roic_ttm%22%2C%22gross_profit_margin_ttm%22%2C%22interest_debt_per_share_ttm%22%2C%22receivables_turnover_ttm%22%2C%22current_ratio_ttm%22%2C%22dividend_paid_and_capex_coverage_ratio_ttm%22%2C%22ptb_ratio_ttm%22%2C%22free_cash_flow_per_share_ttm%22%2C%22income_quality_ttm%22 "HTTP/2 200 OK"
+2025-04-16 18:46:27,491 - fmp_fetcher.clients.db_client - INFO - Successfully upserted 10 record(s) into 'key_metrics_ttm'.
+2025-04-16 18:46:27,491 - fmp_fetcher.tasks.metrics_tasks - INFO - Successfully upserted TTM metrics for 10 symbols.
+2025-04-16 18:46:27,679 - comprehensive_test - INFO - Task metrics_ttm: [SUCCESS] [Duration: 13.58s]
+2025-04-16 18:46:28,680 - comprehensive_test - INFO - ------------------------------ TESTING: news ------------------------------
+2025-04-16 18:46:28,693 - comprehensive_test - INFO - Testing stock news for 10 symbols with limit 3
+2025-04-16 18:46:28,693 - fmp_fetcher.tasks.news_releases_tasks - INFO - Starting stock news fetch for 10 symbols.
+2025-04-16 18:46:28,693 - fmp_fetcher.tasks.news_releases_tasks - INFO - Fetching stock news for symbols chunk: AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT, Limit: 3
+2025-04-16 18:46:28,694 - fmp_fetcher.tasks.news_releases_tasks - INFO - Trying news endpoint: /api/v3/stock_news with tickers parameter
+2025-04-16 18:46:28,694 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/api/v3/stock_news with params: {'tickers': 'AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT', 'limit': 3, 'apikey': '***REDACTED***'}
+2025-04-16 18:46:28,801 - fmp_fetcher.tasks.news_releases_tasks - INFO - Trying news endpoint: /stock-news with tickers parameter
+2025-04-16 18:46:28,802 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/stock-news with params: {'tickers': 'AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT', 'limit': 3, 'apikey': '***REDACTED***'}
+2025-04-16 18:46:29,004 - fmp_fetcher.tasks.news_releases_tasks - INFO - Trying news endpoint: /stock_news with symbols parameter
+2025-04-16 18:46:29,005 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/stock_news with params: {'symbols': 'AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT', 'limit': 3, 'apikey': '***REDACTED***'}
+2025-04-16 18:46:29,129 - fmp_fetcher.tasks.news_releases_tasks - INFO - Trying news endpoint: /api/v4/company-news with symbol parameter
+2025-04-16 18:46:29,130 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/api/v4/company-news with params: {'symbol': 'AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT', 'limit': 3, 'apikey': '***REDACTED***'}
+2025-04-16 18:46:29,227 - fmp_fetcher.tasks.news_releases_tasks - INFO - No news items found for symbols chunk: AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT
+2025-04-16 18:46:29,228 - fmp_fetcher.tasks.news_releases_tasks - WARNING - No valid stock news records could be parsed.
+2025-04-16 18:46:29,228 - comprehensive_test - INFO - Task news: [FAILED] [Duration: 0.55s]
+2025-04-16 18:46:30,229 - comprehensive_test - INFO - 
+==================================================
+2025-04-16 18:46:30,229 - comprehensive_test - INFO - TEST RESULTS SUMMARY
+2025-04-16 18:46:30,230 - comprehensive_test - INFO - ==================================================
+2025-04-16 18:46:30,230 - comprehensive_test - INFO - profiles            : [SUCCESS]
+2025-04-16 18:46:30,230 - comprehensive_test - INFO - prices              : [SUCCESS]
+2025-04-16 18:46:30,231 - comprehensive_test - INFO - metrics_ttm         : [SUCCESS]
+2025-04-16 18:46:30,231 - comprehensive_test - INFO - news                : [FAILED]
+2025-04-16 18:46:30,232 - comprehensive_test - INFO - 
+Tasks completed: 4
+2025-04-16 18:46:30,232 - comprehensive_test - INFO - Tasks successful: 3
+2025-04-16 18:46:30,232 - comprehensive_test - INFO - Tasks failed: 1
+2025-04-16 18:49:50,721 - comprehensive_test - INFO - Starting comprehensive testing with 10 symbols
+2025-04-16 18:49:50,721 - comprehensive_test - INFO - Selected symbols: ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'JPM', 'JNJ', 'PG', 'XOM', 'DIS', 'CAT']
+2025-04-16 18:49:50,721 - comprehensive_test - INFO - Will test 4 tasks: ['profiles', 'prices', 'metrics_ttm', 'news']
+2025-04-16 18:49:50,721 - comprehensive_test - INFO - ------------------------------ TESTING: profiles ------------------------------
+2025-04-16 18:49:51,615 - root - INFO - Supabase client initialized successfully.
+2025-04-16 18:49:51,617 - comprehensive_test - INFO - Testing profiles for 10 symbols
+2025-04-16 18:49:51,617 - fmp_fetcher.tasks.stock_data_tasks - INFO - Starting profile fetch for 10 symbols.
+2025-04-16 18:49:51,618 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/profile-bulk with params: {'part': 0, 'apikey': '***REDACTED***'}
+2025-04-16 18:49:54,177 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/profile-bulk. Attempting CSV parsing.
+2025-04-16 18:49:54,475 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 21290 rows
+2025-04-16 18:49:54,526 - fmp_fetcher.tasks.stock_data_tasks - INFO - Found 10 profiles in bulk data matching requested symbols.
+2025-04-16 18:49:54,980 - httpx - INFO - HTTP Request: POST https://fzluwxuxvegdonfumsnz.supabase.co/rest/v1/stocks?columns=%22website%22%2C%22exchange%22%2C%22market_cap%22%2C%22beta%22%2C%22is_actively_trading%22%2C%22ipo_date%22%2C%22hq_address%22%2C%22industry%22%2C%22company_name%22%2C%22employees%22%2C%22ceo%22%2C%22is_fund%22%2C%22description%22%2C%22cik%22%2C%22is_etf%22%2C%22sector%22%2C%22country%22%2C%22symbol%22%2C%22exchange_short_name%22 "HTTP/2 200 OK"
+2025-04-16 18:49:54,986 - fmp_fetcher.clients.db_client - INFO - Successfully upserted 10 record(s) into 'stocks'.
+2025-04-16 18:49:54,986 - fmp_fetcher.tasks.stock_data_tasks - INFO - Successfully processed 10 out of 10 matched profiles.
+2025-04-16 18:49:55,005 - comprehensive_test - INFO - Task profiles: [SUCCESS] [Duration: 4.28s]
+2025-04-16 18:49:56,006 - comprehensive_test - INFO - ------------------------------ TESTING: prices ------------------------------
+2025-04-16 18:49:56,007 - comprehensive_test - INFO - Testing daily prices for 10 symbols with date 2025-04-15
+2025-04-16 18:49:56,008 - fmp_fetcher.tasks.stock_data_tasks - INFO - Starting EOD price fetch for 10 symbols for date 2025-04-15.
+2025-04-16 18:49:56,008 - fmp_fetcher.tasks.stock_data_tasks - INFO - Trying price endpoint: /eod-bulk
+2025-04-16 18:49:56,008 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/eod-bulk with params: {'date': '2025-04-15', 'apikey': '***REDACTED***'}
+2025-04-16 18:49:56,739 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/eod-bulk. Attempting CSV parsing.
+2025-04-16 18:49:56,843 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 67933 rows
+2025-04-16 18:49:56,845 - fmp_fetcher.tasks.stock_data_tasks - INFO - Successfully fetched prices using endpoint: /eod-bulk
+2025-04-16 18:49:56,845 - fmp_fetcher.tasks.stock_data_tasks - INFO - Received 67933 EOD records from bulk API for 2025-04-15. Parsing target symbols...
+2025-04-16 18:49:56,851 - fmp_fetcher.utils.parsing - INFO - Parsed 10 daily price records for 10 target symbols from bulk data.
+2025-04-16 18:49:56,852 - fmp_fetcher.tasks.stock_data_tasks - INFO - Successfully parsed 10 EOD price records for target symbols.
+2025-04-16 18:49:56,852 - fmp_fetcher.clients.db_client - INFO - Performing upsert on stock_prices_daily with symbol,date conflict handling
+2025-04-16 18:49:56,910 - httpx - INFO - HTTP Request: POST https://fzluwxuxvegdonfumsnz.supabase.co/rest/v1/stock_prices_daily?on_conflict=symbol%2Cdate&columns=%22unadjusted_volume%22%2C%22open%22%2C%22change_percent%22%2C%22change_over_time%22%2C%22date%22%2C%22symbol%22%2C%22change%22%2C%22label%22%2C%22low%22%2C%22vwap%22%2C%22volume%22%2C%22adj_close%22%2C%22high%22%2C%22close%22 "HTTP/2 200 OK"
+2025-04-16 18:49:56,914 - fmp_fetcher.clients.db_client - INFO - Successfully upserted 10 record(s) into 'stock_prices_daily'.
+2025-04-16 18:49:56,915 - fmp_fetcher.tasks.stock_data_tasks - INFO - Successfully upserted 10 EOD price records into the database for 2025-04-15.
+2025-04-16 18:49:56,932 - comprehensive_test - INFO - Task prices: [SUCCESS] [Duration: 0.93s]
+2025-04-16 18:49:57,933 - comprehensive_test - INFO - ------------------------------ TESTING: metrics_ttm ------------------------------
+2025-04-16 18:49:57,968 - comprehensive_test - INFO - Testing TTM metrics for 10 symbols
+2025-04-16 18:49:57,969 - fmp_fetcher.tasks.metrics_tasks - INFO - Starting Bulk TTM key metrics/ratios fetch for 10 symbols.
+2025-04-16 18:49:57,970 - fmp_fetcher.tasks.metrics_tasks - INFO - Fetching data from /key-metrics-ttm-bulk...
+2025-04-16 18:49:57,970 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/key-metrics-ttm-bulk with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:50:07,172 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/key-metrics-ttm-bulk. Attempting CSV parsing.
+2025-04-16 18:50:07,771 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 66866 rows
+2025-04-16 18:50:07,818 - fmp_fetcher.tasks.metrics_tasks - INFO - Successfully fetched TTM metrics for 10 symbols via bulk endpoint.
+2025-04-16 18:50:07,818 - fmp_fetcher.tasks.metrics_tasks - INFO - Fetching data from /ratios-ttm-bulk...
+2025-04-16 18:50:07,818 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/ratios-ttm-bulk with params: {'apikey': '***REDACTED***'}
+2025-04-16 18:50:15,004 - fmp_fetcher.clients.fmp_client - WARNING - JSON parsing failed for https://financialmodelingprep.com/stable/ratios-ttm-bulk. Attempting CSV parsing.
+2025-04-16 18:50:15,799 - fmp_fetcher.clients.fmp_client - INFO - Successfully parsed CSV response with 66866 rows
+2025-04-16 18:50:15,855 - fmp_fetcher.tasks.metrics_tasks - INFO - Successfully fetched TTM ratios for 10 symbols via bulk endpoint.
+2025-04-16 18:50:15,856 - fmp_fetcher.tasks.metrics_tasks - INFO - Combined TTM data for 10 symbols. Parsing...
+2025-04-16 18:50:15,856 - fmp_fetcher.tasks.metrics_tasks - INFO - Successfully parsed TTM metrics for 10 symbols. Upserting to database...
+2025-04-16 18:50:16,145 - httpx - INFO - HTTP Request: POST https://fzluwxuxvegdonfumsnz.supabase.co/rest/v1/key_metrics_ttm?columns=%22average_payables_ttm%22%2C%22pe_ratio_ttm%22%2C%22roe_ttm%22%2C%22graham_net_net_ttm%22%2C%22return_on_capital_employed_ttm%22%2C%22operating_profit_margin_ttm%22%2C%22debt_ratio_ttm%22%2C%22invested_capital_ttm%22%2C%22capex_to_depreciation_ttm%22%2C%22company_equity_multiplier_ttm%22%2C%22pretax_profit_margin_ttm%22%2C%22average_receivables_ttm%22%2C%22cash_flow_to_debt_ratio_ttm%22%2C%22capex_per_share_ttm%22%2C%22roic_ttm%22%2C%22days_of_inventory_on_hand_ttm%22%2C%22cash_per_share_ttm%22%2C%22capex_to_revenue_ttm%22%2C%22tangible_asset_value_ttm%22%2C%22graham_number_ttm%22%2C%22net_income_per_share_ttm%22%2C%22income_quality_ttm%22%2C%22asset_turnover_ttm%22%2C%22operating_cash_flow_sales_ratio_ttm%22%2C%22free_cash_flow_yield_ttm%22%2C%22intangibles_to_total_assets_ttm%22%2C%22long_term_debt_to_capitalization_ttm%22%2C%22enterprise_value_ttm%22%2C%22sales_general_and_administrative_to_revenue_ttm%22%2C%22days_sales_outstanding_ttm%22%2C%22cash_flow_coverage_ratios_ttm%22%2C%22tangible_book_value_per_share_ttm%22%2C%22earnings_yield_ttm%22%2C%22interest_coverage_ttm%22%2C%22book_value_per_share_ttm%22%2C%22enterprise_value_over_ebitdat_tm%22%2C%22revenue_per_share_ttm%22%2C%22net_profit_margin_ttm%22%2C%22net_debt_to_ebitdat_tm%22%2C%22pocfratio_ttm%22%2C%22interest_debt_per_share_ttm%22%2C%22pb_ratio_ttm%22%2C%22market_cap_ttm%22%2C%22short_term_coverage_ratios_ttm%22%2C%22working_capital_ttm%22%2C%22price_to_sales_ratio_ttm%22%2C%22pfcf_ratio_ttm%22%2C%22payables_turnover_ttm%22%2C%22dividend_paid_and_capex_coverage_ratio_ttm%22%2C%22fixed_asset_turnover_ttm%22%2C%22current_ratio_ttm%22%2C%22return_on_tangible_assets_ttm%22%2C%22dividend_yield_percentage_ttm%22%2C%22operating_cash_flow_per_share_ttm%22%2C%22symbol%22%2C%22ev_to_free_cash_flow_ttm%22%2C%22payout_ratio_ttm%22%2C%22research_and_developement_to_revenue_ttm%22%2C%22date_calculated%22%2C%22gross_profit_margin_ttm%22%2C%22capital_expenditure_coverage_ratio_ttm%22%2C%22ev_to_operating_cash_flow_ttm%22%2C%22free_cash_flow_per_share_ttm%22%2C%22days_payables_outstanding_ttm%22%2C%22stock_based_compensation_to_revenue_ttm%22%2C%22debt_to_assets_ttm%22%2C%22ev_to_sales_ttm%22%2C%22debt_to_equity_ttm%22%2C%22average_inventory_ttm%22%2C%22return_on_assets_ttm%22%2C%22net_current_asset_value_ttm%22%2C%22free_cash_flow_operating_cash_flow_ratio_ttm%22%2C%22capex_to_operating_cash_flow_ttm%22%2C%22total_debt_to_capitalization_ttm%22%2C%22ptb_ratio_ttm%22%2C%22shareholders_equity_per_share_ttm%22%2C%22dividend_yield_ttm%22%2C%22inventory_turnover_ttm%22%2C%22receivables_turnover_ttm%22 "HTTP/2 200 OK"
+2025-04-16 18:50:16,152 - fmp_fetcher.clients.db_client - INFO - Successfully upserted 10 record(s) into 'key_metrics_ttm'.
+2025-04-16 18:50:16,152 - fmp_fetcher.tasks.metrics_tasks - INFO - Successfully upserted TTM metrics for 10 symbols.
+2025-04-16 18:50:16,329 - comprehensive_test - INFO - Task metrics_ttm: [SUCCESS] [Duration: 18.39s]
+2025-04-16 18:50:17,330 - comprehensive_test - INFO - ------------------------------ TESTING: news ------------------------------
+2025-04-16 18:50:17,367 - comprehensive_test - INFO - Testing stock news for 10 symbols with limit 3
+2025-04-16 18:50:17,367 - fmp_fetcher.tasks.news_releases_tasks - INFO - Starting stock news fetch for 10 symbols.
+2025-04-16 18:50:17,367 - fmp_fetcher.tasks.news_releases_tasks - INFO - Fetching stock news for symbols chunk: AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT, Limit: 3
+2025-04-16 18:50:17,368 - fmp_fetcher.tasks.news_releases_tasks - INFO - Using news endpoint: /news/stock with symbols parameter
+2025-04-16 18:50:17,368 - fmp_fetcher.clients.fmp_client - INFO - Making FMP API request to: https://financialmodelingprep.com/stable/news/stock with params: {'symbols': 'AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT', 'limit': 3, 'apikey': '***REDACTED***'}
+2025-04-16 18:50:17,501 - fmp_fetcher.tasks.news_releases_tasks - INFO - Received 3 stock news items for symbols chunk: AAPL,MSFT,GOOGL,AMZN,JPM,JNJ,PG,XOM,DIS,CAT. Parsing...
+2025-04-16 18:50:17,502 - fmp_fetcher.tasks.news_releases_tasks - INFO - Successfully parsed 3 news items from this chunk
+2025-04-16 18:50:17,502 - fmp_fetcher.tasks.news_releases_tasks - INFO - Attempting to upsert a total of 3 stock news records...
+2025-04-16 18:50:17,563 - httpx - INFO - HTTP Request: POST https://fzluwxuxvegdonfumsnz.supabase.co/rest/v1/stock_news?columns=%22symbol%22%2C%22site%22%2C%22text%22%2C%22published_date%22%2C%22title%22%2C%22fetched_date%22%2C%22summary%22%2C%22image%22%2C%22url%22 "HTTP/2 400 Bad Request"
+2025-04-16 18:50:17,564 - fmp_fetcher.clients.db_client - ERROR - Supabase APIError during upsert to 'stock_news': Could not find the 'fetched_date' column of 'stock_news' in the schema cache (Code: PGRST204, Details: None, Hint: None)
+Traceback (most recent call last):
+  File "C:\Users\pedro\Downloads\swipefolio-main\fmp_fetcher\clients\db_client.py", line 77, in upsert_data
+    response = supabase.table(table_name).upsert(processed_data).execute()
+  File "C:\Users\pedro\AppData\Local\Programs\Python\Python313\Lib\site-packages\postgrest\_sync\request_builder.py", line 78, in execute
+    raise APIError(r.json())
+postgrest.exceptions.APIError: {'code': 'PGRST204', 'details': None, 'hint': None, 'message': "Could not find the 'fetched_date' column of 'stock_news' in the schema cache"}
+2025-04-16 18:50:17,592 - fmp_fetcher.tasks.news_releases_tasks - ERROR - Failed to upsert stock news records.
+2025-04-16 18:50:17,592 - fmp_fetcher.tasks.news_releases_tasks - WARNING - Finished stock news fetch for 10 requested symbols. Encountered fetch errors: True
+2025-04-16 18:50:17,592 - comprehensive_test - INFO - Task news: [SUCCESS] [Duration: 0.26s]
+2025-04-16 18:50:18,593 - comprehensive_test - INFO - 
+==================================================
+2025-04-16 18:50:18,594 - comprehensive_test - INFO - TEST RESULTS SUMMARY
+2025-04-16 18:50:18,594 - comprehensive_test - INFO - ==================================================
+2025-04-16 18:50:18,595 - comprehensive_test - INFO - profiles            : [SUCCESS]
+2025-04-16 18:50:18,595 - comprehensive_test - INFO - prices              : [SUCCESS]
+2025-04-16 18:50:18,610 - comprehensive_test - INFO - metrics_ttm         : [SUCCESS]
+2025-04-16 18:50:18,611 - comprehensive_test - INFO - news                : [SUCCESS]
+2025-04-16 18:50:18,611 - comprehensive_test - INFO - 
+Tasks completed: 4
+2025-04-16 18:50:18,612 - comprehensive_test - INFO - Tasks successful: 4
+2025-04-16 18:50:18,612 - comprehensive_test - INFO - Tasks failed: 0

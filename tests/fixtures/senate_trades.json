@@ -1,0 +1,19 @@
+[
+  {
+    "symbol": "AAPL",
+    "disclosureDate": "2025-01-08",
+    "transactionDate": "2024-12-19",
+    "firstName": "Sheldon",
+    "lastName": "Whitehouse",
+    "office": "Sheldon Whitehouse",
+    "district": "RI",
+    "owner": "Self",
+    "assetDescription": "Apple Inc",
+    "assetType": "Stock",
+    "type": "Sale (Partial)",
+    "amount": "$15,001 - $50,000",
+    "capitalGainsOver200USD": "False",
+    "comment": "--",
+    "link": "https://efdsearch.senate.gov/search/view/ptr/70c80513-d89a-4382-afa6-d80f6c1fcbf1/"
+  }
+]
