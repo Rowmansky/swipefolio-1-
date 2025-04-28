@@ -165,7 +165,7 @@ export default function HomePage() {
         </AnimatedContainer>
         
         <AnimatedContainer delay={0.35}>
-          <PortfolioCards />
+          <PortfolioPreview />
         </AnimatedContainer>
         
         <AnimatedContainer delay={0.4}>
