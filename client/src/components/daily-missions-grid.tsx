@@ -51,41 +51,41 @@ const MissionItem = ({ icon, title, customTitle, xpValue, iconBg, iconColor, onC
       height: '100%'
     }}
   >
-    <div className="flex justify-between items-start mb-2.5">
-      <div className="p-2 rounded-lg" style={{ backgroundColor: iconBg }}>
+    <div className="flex items-start space-x-3">
+      <div className="p-2 rounded-lg flex-shrink-0" style={{ backgroundColor: iconBg }}>
         <div style={{ color: iconColor }}>
           {icon}
         </div>
       </div>
-    </div>
-    <div>
-      {customTitle ? (
-        customTitle
-      ) : (
-        <h3 className="text-black font-semibold text-base mb-1 leading-tight">{title}</h3>
-      )}
-      <div className="flex justify-end mt-1">
-        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-white text-xs font-semibold"
-          style={{ 
-            backgroundColor: '#5271FF',
-          }}>
-          + {xpValue} XP
-        </span>
+      <div className="flex-1 pt-1">
+        {customTitle ? (
+          customTitle
+        ) : (
+          <h3 className="text-black font-semibold text-base leading-tight">{title}</h3>
+        )}
       </div>
+    </div>
+    <div className="flex justify-end mt-2">
+      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-white text-xs font-semibold"
+        style={{ 
+          backgroundColor: '#4863FF',
+        }}>
+        + {xpValue} XP
+      </span>
     </div>
   </motion.div>
 );
 
 export default function DailyMissionsGrid() {
-  // Missions data with exact iOS match from the reference image
+  // Missions data with exact iOS match from the reference image with deeper colors
   const missions = [
     {
       id: 1,
       title: 'Win a Duel',
       icon: <SwordIcon />,
       xpValue: 25,
-      iconBg: '#EEF0FF',
-      iconColor: '#5271FF'
+      iconBg: '#E6EAFF',
+      iconColor: '#4863FF'
     },
     {
       id: 2,
@@ -98,8 +98,8 @@ export default function DailyMissionsGrid() {
       ),
       icon: <PercentIcon />,
       xpValue: 5,
-      iconBg: '#EEF0FF',
-      iconColor: '#5271FF'
+      iconBg: '#E6EAFF',
+      iconColor: '#4863FF'
     },
     {
       id: 3,
@@ -112,8 +112,8 @@ export default function DailyMissionsGrid() {
       ),
       icon: <ListIcon />,
       xpValue: 10,
-      iconBg: '#EEF0FF',
-      iconColor: '#5271FF'
+      iconBg: '#E6EAFF',
+      iconColor: '#4863FF'
     },
     {
       id: 4,
@@ -126,8 +126,8 @@ export default function DailyMissionsGrid() {
       ),
       icon: <FlameIcon />,
       xpValue: 25,
-      iconBg: '#F0E9FF',
-      iconColor: '#8467FF'
+      iconBg: '#EADFFF',
+      iconColor: '#7B59FF'
     }
   ];
 
