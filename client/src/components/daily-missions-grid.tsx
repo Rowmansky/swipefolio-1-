@@ -10,8 +10,7 @@ interface MissionItemProps {
   onClick?: () => void;
 }
 
-// Creating custom SVG icons that exactly match the iOS reference
-// Using filled variants for more vibrant, noticeable appearance
+// Creating custom SVG icons with deeper, vibrant colors that match the reference image
 const SwordIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M14.5 12.5L19 8M8.5 18.5L5 22M8.5 8.5L5 5M17.5 17.5L22 22M8.5 8.5L12.5 12.5M12.5 12.5L8.5 18.5M12.5 12.5L17.5 17.5" 
@@ -48,16 +47,17 @@ const MissionItem = ({ icon, title, customTitle, xpValue, iconBg, iconColor, onC
     className="bg-white rounded-xl p-3 flex flex-col justify-between cursor-pointer"
     style={{ 
       height: '100%',
-      boxShadow: '0 1px 1px rgba(0,0,0,0.02)'
+      boxShadow: '0 2px 6px rgba(0,0,0,0.05)',
+      border: '1px solid rgba(0,0,0,0.03)'
     }}
   >
     <div className="flex items-center space-x-3 mb-3">
       <div className="rounded-lg flex-shrink-0 flex items-center justify-center" 
         style={{ 
           backgroundColor: iconBg,
-          width: '32px',
-          height: '32px',
-          padding: '4px'
+          width: '36px',
+          height: '36px',
+          padding: '8px'
         }}>
         <div style={{ color: iconColor }}>
           {icon}
@@ -74,7 +74,7 @@ const MissionItem = ({ icon, title, customTitle, xpValue, iconBg, iconColor, onC
     <div className="flex" style={{ 
         justifyContent: xpValue === 5 ? "flex-end" : (xpValue === 10 ? "flex-start" : "flex-end")
       }}>
-      <span className="inline-flex items-center px-2 py-[2px] rounded-full text-white text-xs font-semibold"
+      <span className="inline-flex items-center px-2.5 py-1 rounded-full text-white text-xs font-semibold"
         style={{ 
           backgroundColor: '#4863FF',
           fontSize: '11px'
@@ -86,15 +86,15 @@ const MissionItem = ({ icon, title, customTitle, xpValue, iconBg, iconColor, onC
 );
 
 export default function DailyMissionsGrid() {
-  // Missions data with exact iOS match from the reference image with more vibrant colors
+  // Missions data with deeper, more vibrant colors matching the second screenshot
   const missions = [
     {
       id: 1,
       title: 'Win a Duel',
       icon: <SwordIcon />,
       xpValue: 25,
-      iconBg: '#DBE1FF',
-      iconColor: '#5271FF'
+      iconBg: '#4361FF',
+      iconColor: '#FFFFFF'
     },
     {
       id: 2,
@@ -107,8 +107,8 @@ export default function DailyMissionsGrid() {
       ),
       icon: <PercentIcon />,
       xpValue: 5,
-      iconBg: '#DBE1FF',
-      iconColor: '#5271FF'
+      iconBg: '#4361FF',
+      iconColor: '#FFFFFF'
     },
     {
       id: 3,
@@ -121,8 +121,8 @@ export default function DailyMissionsGrid() {
       ),
       icon: <ListIcon />,
       xpValue: 10,
-      iconBg: '#DBE1FF',
-      iconColor: '#5271FF'
+      iconBg: '#4361FF',
+      iconColor: '#FFFFFF'
     },
     {
       id: 4,
@@ -135,8 +135,8 @@ export default function DailyMissionsGrid() {
       ),
       icon: <FlameIcon />,
       xpValue: 25,
-      iconBg: '#EADFFF',
-      iconColor: '#9167FF'
+      iconBg: '#9259FF',
+      iconColor: '#FFFFFF'
     }
   ];
 
