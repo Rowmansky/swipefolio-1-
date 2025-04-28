@@ -1,34 +1,39 @@
 import { motion } from 'framer-motion';
-import { GraduationCap, ArrowUp } from 'lucide-react';
+import { GraduationCap, ArrowUp, ChevronUp } from 'lucide-react';
 
 export default function EducationalLevelProgress() {
-  // Sample data for educational progress
+  // Sample data for educational progress, exactly matching the reference image
   const levelInProgress = 1;
   const completionPercentage = 67;
+  
+  // Define sharper green color
+  const greenColor = '#22C55E';
 
   return (
-    <div className="mb-6">
-      <h2 className="text-xl font-semibold text-slate-800 mb-4">Level Progress</h2>
+    <div className="mb-4">
+      <h2 className="text-xl font-bold text-slate-900 mb-3">Level Progress</h2>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="bg-white rounded-xl p-4 shadow-sm border border-slate-200"
+        className="bg-white rounded-xl p-4 shadow-sm border border-slate-100"
+        style={{ boxShadow: '0 4px 12px -2px rgba(0,0,0,0.05)' }}
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <div className="h-10 w-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
-              <GraduationCap className="h-5 w-5 text-white" />
+            <div className="h-10 w-10 rounded-full flex items-center justify-center mr-3"
+                style={{ backgroundColor: greenColor }}>
+              <ChevronUp className="h-5 w-5 text-white" />
             </div>
             <div>
               <div className="text-sm text-slate-500">
                 {levelInProgress} {levelInProgress === 1 ? 'level' : 'levels'} in progress
               </div>
               <div className="flex items-center">
-                <div className="text-2xl font-bold text-slate-800">{completionPercentage}%</div>
-                <div className="ml-2 text-green-500 font-medium flex items-center">
+                <div className="text-2xl font-bold text-slate-900">{completionPercentage}% Win</div>
+                <div className="ml-2 font-medium flex items-center" style={{ color: greenColor }}>
                   <ArrowUp className="h-4 w-4 mr-0.5" />
-                  Complete
+                  3h Loss
                 </div>
               </div>
             </div>
@@ -49,7 +54,7 @@ export default function EducationalLevelProgress() {
                 cy="50"
                 r="40"
                 fill="none"
-                stroke="#22C55E"
+                stroke={greenColor}
                 strokeWidth="10"
                 strokeDasharray={`${completionPercentage * 2.51} ${251 - completionPercentage * 2.51}`}
                 strokeDashoffset="62.5"
@@ -57,14 +62,25 @@ export default function EducationalLevelProgress() {
               />
               <text
                 x="50"
-                y="55"
+                y="50"
                 textAnchor="middle"
                 dominantBaseline="middle"
-                fontSize="18"
+                fontSize="16"
                 fontWeight="bold"
-                fill="#22C55E"
+                fill={greenColor}
               >
                 {completionPercentage}%
+              </text>
+              <text
+                x="50"
+                y="66"
+                textAnchor="middle"
+                dominantBaseline="middle"
+                fontSize="10"
+                fontWeight="medium"
+                fill={greenColor}
+              >
+                Win
               </text>
             </svg>
           </div>

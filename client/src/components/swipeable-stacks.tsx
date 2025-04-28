@@ -17,29 +17,35 @@ interface StackCardProps {
   onClick: (id: number) => void;
 }
 
-// Individual stack card component
+// Individual stack card component - iOS style
 const StackCard = ({ stack, onClick }: StackCardProps) => (
   <motion.div
-    whileHover={{ y: -5, scale: 1.02 }}
+    whileHover={{ y: -5, scale: 1.02, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }}
     whileTap={{ scale: 0.98 }}
     onClick={() => onClick(stack.id)}
-    className="flex-shrink-0 w-64 bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden mr-3"
+    className="flex-shrink-0 w-56 bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden mr-2.5"
+    style={{ boxShadow: '0 4px 12px -2px rgba(0,0,0,0.05)' }}
   >
-    <div className="h-24 bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center relative overflow-hidden">
+    <div className="h-20 flex items-center justify-center relative overflow-hidden"
+      style={{ 
+        background: 'linear-gradient(135deg, #4F46E5, #4338CA)',
+      }}
+    >
       {stack.imageUrl && (
         <img 
           src={stack.imageUrl} 
           alt={stack.title} 
-          className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-overlay"
+          className="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-overlay"
         />
       )}
-      <h3 className="text-white font-bold text-lg z-10 px-4 text-center">{stack.title}</h3>
+      <h3 className="text-white font-bold text-lg z-10 px-4 text-center leading-snug tracking-tight">{stack.title}</h3>
     </div>
     <div className="p-3">
-      <p className="text-slate-600 text-sm mb-2 line-clamp-2">{stack.description}</p>
+      <p className="text-slate-600 text-xs mb-2 line-clamp-2 leading-snug">{stack.description}</p>
       <div className="flex justify-between items-center">
-        <span className="text-xs text-slate-500">{stack.cardCount} cards</span>
-        <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">{stack.industry}</span>
+        <span className="text-xs text-slate-500 font-medium">{stack.cardCount} cards</span>
+        <span className="text-xs font-medium px-2 py-0.5 rounded-full"
+          style={{ backgroundColor: 'rgba(79, 70, 229, 0.1)', color: '#4F46E5' }}>{stack.industry}</span>
       </div>
     </div>
   </motion.div>
@@ -173,26 +179,28 @@ export default function SwipeableStacks({ stacks }: SwipeableStacksProps) {
   };
 
   return (
-    <div className="mb-6 relative">
-      <h2 className="text-xl font-semibold text-slate-800 mb-4">Learning Stacks</h2>
+    <div className="mb-4 relative">
+      <h2 className="text-xl font-bold text-slate-900 mb-3">Learning Stacks</h2>
       
-      <div className="bg-slate-100 rounded-xl p-4 relative">
+      <div className="bg-slate-100 rounded-xl p-3.5 relative"
+        style={{ backgroundColor: '#F1F5F9' }}>
         {/* Left scroll button */}
         {showLeftArrow && (
           <motion.button
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white w-8 h-8 rounded-full shadow-md flex items-center justify-center"
+            style={{ boxShadow: '0 4px 10px rgba(0,0,0,0.1)' }}
             onClick={() => handleScroll('left')}
           >
-            <ChevronLeft className="w-5 h-5 text-slate-600" />
+            <ChevronLeft className="w-5 h-5 text-slate-700" />
           </motion.button>
         )}
         
         {/* Scrollable container */}
         <div 
           ref={scrollContainerRef}
-          className="flex overflow-x-auto py-2 scrollbar-hide"
+          className="flex overflow-x-auto py-2 scrollbar-hide gap-2.5"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {enhancedStacks.map(stack => (
@@ -210,9 +218,10 @@ export default function SwipeableStacks({ stacks }: SwipeableStacksProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white w-8 h-8 rounded-full shadow-md flex items-center justify-center"
+            style={{ boxShadow: '0 4px 10px rgba(0,0,0,0.1)' }}
             onClick={() => handleScroll('right')}
           >
-            <ChevronRight className="w-5 h-5 text-slate-600" />
+            <ChevronRight className="w-5 h-5 text-slate-700" />
           </motion.button>
         )}
       </div>

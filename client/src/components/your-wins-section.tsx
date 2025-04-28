@@ -5,52 +5,65 @@ interface WinBubbleProps {
   icon: React.ReactNode;
   value: string;
   label: string;
-  color: string;
+  gradientFrom: string;
+  gradientTo: string;
 }
 
-const WinBubble = ({ icon, value, label, color }: WinBubbleProps) => (
+const WinBubble = ({ icon, value, label, gradientFrom, gradientTo }: WinBubbleProps) => (
   <motion.div
     whileHover={{ y: -5, scale: 1.03 }}
     className="flex flex-col items-center"
   >
-    <div className={`w-20 h-20 rounded-full flex items-center justify-center mb-2 ${color}`}>
+    <div 
+      className="w-18 h-18 rounded-full flex items-center justify-center mb-2 shadow-sm"
+      style={{ 
+        background: `linear-gradient(135deg, ${gradientFrom}, ${gradientTo})`,
+        width: '4.25rem',
+        height: '4.25rem',
+        boxShadow: `0 6px 12px -3px ${gradientTo}30`
+      }}
+    >
       {icon}
     </div>
-    <div className="text-lg font-bold text-slate-800">{value}</div>
-    <div className="text-xs text-slate-500">{label}</div>
+    <div className="text-lg font-bold text-slate-900">{value}</div>
+    <div className="text-xs text-slate-500 font-medium">{label}</div>
   </motion.div>
 );
 
 export default function YourWinsSection() {
-  // Sample win data
+  // Sample win data with enhanced colors
   const winData = [
     {
       id: 1,
-      icon: <Trophy className="w-8 h-8 text-white" />,
+      icon: <Trophy className="w-7 h-7 text-white" />,
       value: '3',
       label: 'Badges Earned',
-      color: 'bg-gradient-to-br from-amber-400 to-amber-500'
+      gradientFrom: '#F59E0B',
+      gradientTo: '#D97706'
     },
     {
       id: 2,
-      icon: <TrendingUp className="w-8 h-8 text-white" />,
+      icon: <TrendingUp className="w-7 h-7 text-white" />,
       value: '12%',
       label: 'Portfolio Growth',
-      color: 'bg-gradient-to-br from-green-400 to-green-500'
+      gradientFrom: '#10B981',
+      gradientTo: '#059669'
     },
     {
       id: 3,
-      icon: <Sparkles className="w-8 h-8 text-white" />,
+      icon: <Sparkles className="w-7 h-7 text-white" />,
       value: '7',
       label: 'Lessons Completed',
-      color: 'bg-gradient-to-br from-blue-400 to-indigo-500'
+      gradientFrom: '#4F46E5',
+      gradientTo: '#4338CA'
     }
   ];
 
   return (
-    <div className="mb-6">
-      <h2 className="text-xl font-semibold text-slate-800 mb-4">Your Wins</h2>
-      <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+    <div className="mb-4">
+      <h2 className="text-xl font-bold text-slate-900 mb-3">Your Wins</h2>
+      <div className="bg-white rounded-xl p-5 shadow-sm border border-slate-100"
+        style={{ boxShadow: '0 4px 12px -2px rgba(0,0,0,0.05)' }}>
         <div className="flex justify-around">
           {winData.map((win) => (
             <WinBubble
@@ -58,7 +71,8 @@ export default function YourWinsSection() {
               icon={win.icon}
               value={win.value}
               label={win.label}
-              color={win.color}
+              gradientFrom={win.gradientFrom}
+              gradientTo={win.gradientTo}
             />
           ))}
         </div>
