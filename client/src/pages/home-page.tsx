@@ -6,16 +6,19 @@ import AppHeader from "@/components/app-header";
 import AppNavigation from "@/components/app-navigation";
 import CategoryChips from "@/components/category-chips";
 import SectionHeader from "@/components/section-header";
-import StacksExplorer from "@/components/stacks-explorer";
 
 import { useAuth } from "@/hooks/use-auth";
 import { useState, useContext, useRef, useEffect } from "react";
-import HeroSection from "@/components/hero-section";
 import ModernUserWelcome from "@/components/modern-user-welcome";
-import PortfolioDashboard from "@/components/portfolio-dashboard";
-import CompetitionTracker from "@/components/competition-tracker-with-popup";
 import { PortfolioContext, usePortfolio } from "@/contexts/portfolio-context";
 import AIAssistant from "@/components/ui/ai-assistant";
+
+// Import our new components
+import SeasonQuestBanner from "@/components/season-quest-banner";
+import DailyMissionsGrid from "@/components/daily-missions-grid";
+import EducationalLevelProgress from "@/components/educational-level-progress";
+import YourWinsSection from "@/components/your-wins-section";
+import SwipeableStacks from "@/components/swipeable-stacks";
 
 // iOS-style frosted glass background for AI sections
 const GradientBackground = ({ children }: { children: React.ReactNode }) => (
@@ -143,39 +146,30 @@ export default function HomePage() {
       
       <main className="main-content pb-24 pt-20 px-4 bg-gradient-to-br from-slate-50 via-white to-blue-50/40">
         <AnimatedContainer>
-          <HeroSection />
           <ModernUserWelcome name="Belford&Co" rank={11} />
-          <CompetitionTracker />
+          <SeasonQuestBanner />
         </AnimatedContainer>
         
-        <AnimatedContainer delay={0.15}>
-          <div className="md:grid md:grid-cols-1 md:gap-4">
-            <PortfolioDashboard />
-          </div>
+        <AnimatedContainer delay={0.1}>
+          <DailyMissionsGrid />
         </AnimatedContainer>
         
-        <AnimatedContainer delay={0.25}>
-          <div className="mb-2 mt-4">
-            <h2 className="text-xl font-semibold text-slate-800">Popular Picks</h2>
-          </div>
-          <CategoryChips 
-            onCategoryChange={setSelectedCategory}
-          />
+        <AnimatedContainer delay={0.2}>
+          <EducationalLevelProgress />
+        </AnimatedContainer>
+        
+        <AnimatedContainer delay={0.3}>
+          <YourWinsSection />
         </AnimatedContainer>
         
         <AnimatedContainer delay={0.4}>
-          <div className="mt-0"></div>
-          <SectionHeader 
-            title={selectedCategory} 
-          />
-          
           {isLoadingStacks ? (
             <div className="flex justify-center items-center py-12">
               <Loader2 className="h-8 w-8 animate-spin text-indigo-500" />
             </div>
           ) : stacks ? (
-            <StacksExplorer 
-              stacks={filterStacksByCategory(stacks, selectedCategory)}
+            <SwipeableStacks 
+              stacks={stacks}
             />
           ) : (
             <div className="text-center py-12 text-gray-400">
@@ -184,7 +178,6 @@ export default function HomePage() {
           )}
         </AnimatedContainer>
       </main>
-      
       
       <AIAssistant />
       <AppNavigation />
