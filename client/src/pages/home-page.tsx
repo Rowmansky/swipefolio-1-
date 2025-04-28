@@ -144,7 +144,7 @@ export default function HomePage() {
     <>
       <AppHeader />
       
-      <main className="main-content pb-24 pt-20 px-4 bg-gradient-to-br from-slate-50 via-white to-blue-50/40">
+      <main className="main-content pb-20 pt-16 px-3.5 bg-white">
         <AnimatedContainer>
           <ModernUserWelcome name="Belford&Co" rank={11} />
           <SeasonQuestBanner />

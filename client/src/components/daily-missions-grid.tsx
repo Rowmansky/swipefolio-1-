@@ -15,19 +15,22 @@ const MissionItem = ({ icon, title, xpValue, iconBg, iconColor, onClick }: Missi
     whileHover={{ y: -3, boxShadow: '0 6px 15px -3px rgba(0,0,0,0.1)' }}
     whileTap={{ scale: 0.97 }}
     onClick={onClick}
-    className="bg-white rounded-xl p-3.5 shadow-sm border border-slate-100 flex flex-col justify-between cursor-pointer"
+    className="bg-white rounded-xl p-3 shadow-sm border border-slate-100 flex flex-col justify-between cursor-pointer"
     style={{ boxShadow: '0 3px 10px -2px rgba(0,0,0,0.05)' }}
   >
-    <div className="flex justify-between items-start mb-3">
+    <div className="flex justify-between items-start mb-2">
       <div className="p-2 rounded-lg" style={{ backgroundColor: iconBg, color: iconColor }}>
         {icon}
       </div>
     </div>
     <div>
-      <h3 className="text-slate-900 font-semibold text-base mb-1">{title}</h3>
+      <h3 className="text-slate-900 font-bold text-base mb-1 leading-tight">{title}</h3>
       <div className="flex justify-end">
-        <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-blue-500 text-white text-xs font-medium"
-          style={{ backgroundColor: '#3B82F6' }}>
+        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-white text-xs font-medium"
+          style={{ 
+            backgroundColor: '#3B82F6',
+            boxShadow: '0 2px 4px rgba(59, 130, 246, 0.3)'
+          }}>
           + {xpValue} XP
         </span>
       </div>

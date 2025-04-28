@@ -16,7 +16,7 @@ export default function EducationalLevelProgress() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="bg-white rounded-xl p-4 shadow-sm border border-slate-100"
+        className="bg-white rounded-xl p-3.5 shadow-sm border border-slate-100"
         style={{ boxShadow: '0 4px 12px -2px rgba(0,0,0,0.05)' }}
       >
         <div className="flex items-center justify-between">
