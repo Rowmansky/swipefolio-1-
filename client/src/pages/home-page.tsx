@@ -19,6 +19,7 @@ import DailyMissionsGrid from "@/components/daily-missions-grid";
 import EducationalLevelProgress from "@/components/educational-level-progress";
 import YourWinsSection from "@/components/your-wins-section";
 import SwipeableStacks from "@/components/swipeable-stacks";
+import PortfolioCards from "@/components/portfolio-cards";
 
 // iOS-style frosted glass background for AI sections
 const GradientBackground = ({ children }: { children: React.ReactNode }) => (
@@ -160,6 +161,10 @@ export default function HomePage() {
         
         <AnimatedContainer delay={0.3}>
           <YourWinsSection />
+        </AnimatedContainer>
+        
+        <AnimatedContainer delay={0.35}>
+          <PortfolioCards />
         </AnimatedContainer>
         
         <AnimatedContainer delay={0.4}>

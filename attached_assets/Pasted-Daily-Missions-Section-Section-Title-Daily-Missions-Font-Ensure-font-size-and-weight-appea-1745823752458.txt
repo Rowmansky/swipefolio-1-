@@ -1,0 +1,121 @@
+Daily Missions Section:
+
+Section Title ("Daily Missions"):
+
+Font: Ensure font size and weight (appears bolder in Screenshot 1) match.
+
+Spacing: Adjust the margin below the title to match the space between the title and the mission cards in Screenshot 1 (appears slightly less space than in Screenshot 2).
+
+Mission Cards (General Styling):
+
+Background: Use a pure white or very light off-white background, matching Screenshot 1 (Screenshot 2 cards might have a subtle grey tint).
+
+Shadows: Reduce or remove the drop shadow effect present on Screenshot 2's cards to match the flatter appearance of Screenshot 1.
+
+Corner Radius: Slightly decrease the corner rounding radius if it differs from Screenshot 1.
+
+Padding: Adjust internal padding within each card. Screenshot 1 appears to have slightly less padding overall, making the content feel tighter.
+
+Spacing Between Cards: Adjust the horizontal and vertical gaps between the four cards to precisely match Screenshot 1's grid spacing.
+
+Mission Cards (Content Arrangement - Apply to all 4 cards):
+
+Icon:
+
+Ensure the correct icon is used (Swords, %, List, Flame as per previous instructions).
+
+Verify icon size. Icons in Screenshot 1 might be slightly smaller or larger than in Screenshot 2.
+
+Adjust the spacing between the icon and the mission text block to its right.
+
+Mission Text (e.g., "Win a Duel"):
+
+Ensure font size and weight match Screenshot 1.
+
+Check vertical alignment relative to the icon.
+
+XP Reward Text (e.g., "+ 25 XP"):
+
+Background: Ensure the blue background color matches Screenshot 1's shade precisely.
+
+Padding: Adjust the padding within the blue XP reward box (left/right, top/bottom). Screenshot 1's looks tighter.
+
+Corner Radius: Match the corner radius of the XP box to Screenshot 1.
+
+Font: Verify font size, color (white), and weight for the XP text.
+
+Positioning: Ensure the XP box is positioned exactly as in Screenshot 1 (typically bottom-aligned within the card, potentially slightly offset from the right edge). Adjust spacing above the XP box relative to the mission text.
+
+Duels Progress Section (Formerly Level Progress):
+
+Section Title ("Duels Progress"):
+
+Font: Match font size and weight (appears bolder in Screenshot 1) to the target.
+
+Spacing: Adjust margin below the title to match the space before the content box in Screenshot 1.
+
+Content Box:
+
+Background/Border: Ensure it matches Screenshot 1 (appears to be a white background with potentially a very light grey border or no border, unlike the slight shadow in Screenshot 2). Match corner radius.
+
+Padding: Adjust internal padding to match Screenshot 1.
+
+Left Side Text & Icon:
+
+Text ("1 duel in progress"): Match font size and weight.
+
+Icon (Green Up Arrow): Verify size and exact placement before "67% Win".
+
+Text ("67% Win"): Match font size, weight (appears bolder in Screenshot 1), and color (black/dark grey).
+
+Text ("3h Loss"): Match font size, weight, and color (appears a lighter grey in Screenshot 1).
+
+Vertical Spacing: Adjust the spacing between "1 duel in progress", "67% Win", and "3h Loss" to match Screenshot 1 precisely. Ensure alignment (left-aligned).
+
+Right Side Circular Progress Bar:
+
+Size: Adjust the overall diameter of the circle and the thickness of the progress ring to match Screenshot 1.
+
+Colors: Ensure the green progress color and the light grey background ring color match Screenshot 1's shades exactly.
+
+Text Inside ("67% Win"):
+
+Match font sizes for both "67%" and "Win".
+
+Match font weights (both appear bold in Screenshot 1).
+
+Match font color (green, matching the progress ring).
+
+Adjust the vertical spacing between "67%" and "Win".
+
+Positioning: Ensure the entire circular graphic is positioned correctly within the content box (vertically centered, specific distance from the right edge) as per Screenshot 1.
+
+Portfolio Section (New Section):
+
+Section Title ("Portfolio"):
+
+Font: Match font size and weight (bold) to other section titles in Screenshot 1.
+
+Spacing: Ensure appropriate margin below the title before the portfolio cards.
+
+Portfolio Cards (General):
+
+Layout: Ensure horizontal arrangement with correct spacing between cards.
+
+Styling: Match background color (white), corner radius, and padding to the Daily Mission cards in Screenshot 1. Avoid shadows.
+
+Portfolio Cards (Content Arrangement - Apply to all 3):
+
+Ticker (e.g., "AAPL"): Match font size, weight (bold), and color. Check spacing below it.
+
+Price (e.g., "$172.14"): Match font size, weight (appears less bold than ticker), and color.
+
+Sparkline Graph:
+
+Match the height and width.
+
+Match the line color (blue/grey) and thickness.
+
+Ensure the general trend shape visually approximates Screenshot 1's graphs.
+
+Verify positioning relative to the text elements (usually below the price).

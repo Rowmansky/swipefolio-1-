@@ -1,38 +1,38 @@
 import { motion } from 'framer-motion';
-import { GraduationCap, ArrowUp, ChevronUp } from 'lucide-react';
+import { ChevronUp, ArrowUp } from 'lucide-react';
 
 export default function EducationalLevelProgress() {
-  // Sample data for educational progress, exactly matching the reference image
-  const levelInProgress = 1;
+  // Sample data to exactly match the reference image
+  const duelsInProgress = 1;
   const completionPercentage = 67;
   
-  // Define sharper green color
+  // Define exact green color from iOS screenshot
   const greenColor = '#22C55E';
 
   return (
-    <div className="mb-4">
-      <h2 className="text-xl font-bold text-slate-900 mb-3">Level Progress</h2>
+    <div className="mb-3">
+      <h2 className="text-xl font-bold text-black mb-2.5">Duels Progress</h2>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="bg-white rounded-xl p-3.5 shadow-sm border border-slate-100"
-        style={{ boxShadow: '0 4px 12px -2px rgba(0,0,0,0.05)' }}
+        className="bg-white rounded-xl p-3"
+        style={{ border: '1px solid rgba(0,0,0,0.03)' }}
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <div className="h-10 w-10 rounded-full flex items-center justify-center mr-3"
+            <div className="h-9 w-9 rounded-full flex items-center justify-center mr-3"
                 style={{ backgroundColor: greenColor }}>
               <ChevronUp className="h-5 w-5 text-white" />
             </div>
             <div>
-              <div className="text-sm text-slate-500">
-                {levelInProgress} {levelInProgress === 1 ? 'level' : 'levels'} in progress
+              <div className="text-sm text-slate-500 mb-0.5">
+                {duelsInProgress} duel in progress
               </div>
               <div className="flex items-center">
-                <div className="text-2xl font-bold text-slate-900">{completionPercentage}% Win</div>
-                <div className="ml-2 font-medium flex items-center" style={{ color: greenColor }}>
-                  <ArrowUp className="h-4 w-4 mr-0.5" />
+                <div className="text-2xl font-bold text-black">{completionPercentage}% Win</div>
+                <div className="ml-2 font-medium flex items-center text-sm" style={{ color: greenColor }}>
+                  <ArrowUp className="h-3.5 w-3.5 mr-0.5" />
                   3h Loss
                 </div>
               </div>
@@ -62,10 +62,10 @@ export default function EducationalLevelProgress() {
               />
               <text
                 x="50"
-                y="50"
+                y="48"
                 textAnchor="middle"
                 dominantBaseline="middle"
-                fontSize="16"
+                fontSize="18"
                 fontWeight="bold"
                 fill={greenColor}
               >
@@ -73,11 +73,11 @@ export default function EducationalLevelProgress() {
               </text>
               <text
                 x="50"
-                y="66"
+                y="68"
                 textAnchor="middle"
                 dominantBaseline="middle"
                 fontSize="10"
-                fontWeight="medium"
+                fontWeight="bold"
                 fill={greenColor}
               >
                 Win

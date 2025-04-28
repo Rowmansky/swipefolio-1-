@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Percent, BarChart3, RotateCw, Zap } from 'lucide-react';
+import { Sword, Percent, List, Flame } from 'lucide-react';
 
 interface MissionItemProps {
   icon: React.ReactNode;
@@ -12,24 +12,23 @@ interface MissionItemProps {
 
 const MissionItem = ({ icon, title, xpValue, iconBg, iconColor, onClick }: MissionItemProps) => (
   <motion.div
-    whileHover={{ y: -3, boxShadow: '0 6px 15px -3px rgba(0,0,0,0.1)' }}
-    whileTap={{ scale: 0.97 }}
+    whileHover={{ y: -2 }}
+    whileTap={{ scale: 0.98 }}
     onClick={onClick}
-    className="bg-white rounded-xl p-3 shadow-sm border border-slate-100 flex flex-col justify-between cursor-pointer"
-    style={{ boxShadow: '0 3px 10px -2px rgba(0,0,0,0.05)' }}
+    className="bg-white rounded-xl p-2.5 flex flex-col justify-between cursor-pointer"
+    style={{ border: '1px solid rgba(0,0,0,0.03)' }}
   >
     <div className="flex justify-between items-start mb-2">
-      <div className="p-2 rounded-lg" style={{ backgroundColor: iconBg, color: iconColor }}>
+      <div className="p-1.5 rounded-lg" style={{ backgroundColor: iconBg, color: iconColor }}>
         {icon}
       </div>
     </div>
     <div>
-      <h3 className="text-slate-900 font-bold text-base mb-1 leading-tight">{title}</h3>
+      <h3 className="text-slate-900 font-bold text-[15px] mb-1 leading-tight">{title}</h3>
       <div className="flex justify-end">
-        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-white text-xs font-medium"
+        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-white text-xs font-medium"
           style={{ 
-            backgroundColor: '#3B82F6',
-            boxShadow: '0 2px 4px rgba(59, 130, 246, 0.3)'
+            backgroundColor: '#3B82F6'
           }}>
           + {xpValue} XP
         </span>
@@ -39,12 +38,12 @@ const MissionItem = ({ icon, title, xpValue, iconBg, iconColor, onClick }: Missi
 );
 
 export default function DailyMissionsGrid() {
-  // Sample mission data with enhanced colors to match design
+  // Missions data with exact iOS match
   const missions = [
     {
       id: 1,
-      title: 'Complete a Lesson',
-      icon: <BarChart3 className="w-5 h-5" />,
+      title: 'Win a Duel',
+      icon: <Sword className="w-5 h-5" />,
       xpValue: 25,
       iconBg: '#E0E7FF',
       iconColor: '#4F46E5'
@@ -60,7 +59,7 @@ export default function DailyMissionsGrid() {
     {
       id: 3,
       title: 'Review Your Moves',
-      icon: <RotateCw className="w-5 h-5" />,
+      icon: <List className="w-5 h-5" />,
       xpValue: 10,
       iconBg: '#DBEAFE',
       iconColor: '#3B82F6'
@@ -68,7 +67,7 @@ export default function DailyMissionsGrid() {
     {
       id: 4,
       title: '2-Day Streak',
-      icon: <Zap className="w-5 h-5" />,
+      icon: <Flame className="w-5 h-5" />,
       xpValue: 25,
       iconBg: '#EDE9FE',
       iconColor: '#8B5CF6'
@@ -76,9 +75,9 @@ export default function DailyMissionsGrid() {
   ];
 
   return (
-    <div className="mb-4">
-      <h2 className="text-xl font-bold text-slate-900 mb-3">Daily Missions</h2>
-      <div className="grid grid-cols-2 gap-2.5">
+    <div className="mb-3">
+      <h2 className="text-xl font-bold text-black mb-2.5">Daily Missions</h2>
+      <div className="grid grid-cols-2 gap-2">
         {missions.map((mission) => (
           <MissionItem
             key={mission.id}
