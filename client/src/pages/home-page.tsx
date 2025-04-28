@@ -20,6 +20,7 @@ import EducationalLevelProgress from "@/components/educational-level-progress";
 import YourWinsSection from "@/components/your-wins-section";
 import SwipeableStacks from "@/components/swipeable-stacks";
 import PortfolioCards from "@/components/portfolio-cards";
+import PortfolioPreview from "@/components/portfolio-preview";
 
 // iOS-style frosted glass background for AI sections
 const GradientBackground = ({ children }: { children: React.ReactNode }) => (

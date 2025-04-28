@@ -6,22 +6,25 @@ export default function EducationalLevelProgress() {
   const duelsInProgress = 1;
   const completionPercentage = 67;
   
-  // Define exact green color from iOS screenshot
+  // Define exact green color from iOS screenshot - updated to more vibrant green
   const greenColor = '#22C55E';
 
   return (
-    <div className="mb-3">
+    <div className="mb-4">
       <h2 className="text-xl font-bold text-black mb-2.5">Duels Progress</h2>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="bg-white rounded-xl p-3"
-        style={{ border: '1px solid rgba(0,0,0,0.03)' }}
+        className="bg-white rounded-xl p-4"
+        style={{ 
+          border: '1px solid rgba(0,0,0,0.03)',
+          boxShadow: '0 2px 6px rgba(0,0,0,0.05)'
+        }}
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <div className="h-9 w-9 rounded-full flex items-center justify-center mr-3"
+            <div className="h-10 w-10 rounded-full flex items-center justify-center mr-3"
                 style={{ backgroundColor: greenColor }}>
               <ChevronUp className="h-5 w-5 text-white" />
             </div>
@@ -39,7 +42,7 @@ export default function EducationalLevelProgress() {
             </div>
           </div>
 
-          <div className="w-16 h-16 relative">
+          <div className="w-20 h-20 relative">
             <svg className="w-full h-full" viewBox="0 0 100 100">
               <circle
                 cx="50"
@@ -47,7 +50,7 @@ export default function EducationalLevelProgress() {
                 r="40"
                 fill="none"
                 stroke="#E5E7EB"
-                strokeWidth="10"
+                strokeWidth="8"
               />
               <circle
                 cx="50"
@@ -55,17 +58,18 @@ export default function EducationalLevelProgress() {
                 r="40"
                 fill="none"
                 stroke={greenColor}
-                strokeWidth="10"
+                strokeWidth="8"
                 strokeDasharray={`${completionPercentage * 2.51} ${251 - completionPercentage * 2.51}`}
                 strokeDashoffset="62.5"
                 transform="rotate(-90 50 50)"
+                strokeLinecap="round"
               />
               <text
                 x="50"
-                y="48"
+                y="50"
                 textAnchor="middle"
                 dominantBaseline="middle"
-                fontSize="18"
+                fontSize="20"
                 fontWeight="bold"
                 fill={greenColor}
               >
@@ -73,10 +77,10 @@ export default function EducationalLevelProgress() {
               </text>
               <text
                 x="50"
-                y="68"
+                y="70"
                 textAnchor="middle"
                 dominantBaseline="middle"
-                fontSize="10"
+                fontSize="12"
                 fontWeight="bold"
                 fill={greenColor}
               >
