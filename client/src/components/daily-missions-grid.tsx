@@ -1,92 +1,76 @@
 import { motion } from 'framer-motion';
-import { 
-  FileCheck, 
-  PercentCircle, 
-  Flame, 
-  Zap,
-  Swords
-} from 'lucide-react';
-import React from 'react';
+import { Percent, BarChart3, RotateCw, Zap } from 'lucide-react';
 
-// Single mission card component
-interface MissionCardProps {
+interface MissionItemProps {
   icon: React.ReactNode;
   title: string;
-  xpReward: number;
-  onClick: () => void;
+  xpValue: number;
+  onClick?: () => void;
 }
 
-const MissionCard = ({ icon, title, xpReward, onClick }: MissionCardProps) => {
-  return (
-    <motion.div
-      className="bg-white rounded-2xl shadow-sm p-4 flex flex-col justify-between h-full"
-      whileHover={{ y: -2, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.05)' }}
-      whileTap={{ scale: 0.98 }}
-      onClick={onClick}
-    >
-      <div className="flex flex-col h-full">
-        <div className="mb-2">
-          <div className="bg-blue-100 w-12 h-12 rounded-xl flex items-center justify-center">
-            {icon}
-          </div>
-        </div>
-        
-        <h3 className="text-lg font-semibold text-slate-800 mb-auto">{title}</h3>
-        
-        <div className="self-end mt-2">
-          <div className="flex items-center bg-blue-500 text-white text-xs font-medium rounded-full px-3 py-1.5">
-            <span>+ {xpReward} XP</span>
-          </div>
-        </div>
+const MissionItem = ({ icon, title, xpValue, onClick }: MissionItemProps) => (
+  <motion.div
+    whileHover={{ y: -3, backgroundColor: 'rgba(255, 255, 255, 0.8)' }}
+    whileTap={{ scale: 0.97 }}
+    onClick={onClick}
+    className="bg-white rounded-xl p-4 shadow-sm border border-slate-100 flex flex-col justify-between cursor-pointer"
+  >
+    <div className="flex justify-between items-start mb-4">
+      <div className="text-blue-500 p-2 bg-blue-100 rounded-lg">
+        {icon}
       </div>
-    </motion.div>
-  );
-};
+    </div>
+    <div>
+      <h3 className="text-slate-800 font-semibold mb-1">{title}</h3>
+      <div className="flex justify-end">
+        <span className="inline-flex items-center px-2 py-1 rounded-full bg-blue-500 text-white text-xs font-medium">
+          + {xpValue} XP
+        </span>
+      </div>
+    </div>
+  </motion.div>
+);
 
-interface DailyMissionsGridProps {
-  onMissionClick: (missionId: string) => void;
-}
-
-export default function DailyMissionsGrid({ onMissionClick }: DailyMissionsGridProps) {
-  // Missions data
+export default function DailyMissionsGrid() {
+  // Sample mission data
   const missions = [
     {
-      id: 'win-duel',
-      title: 'Win a Duel',
-      icon: <Swords className="h-6 w-6 text-blue-600" />,
-      xpReward: 25
+      id: 1,
+      title: 'Complete a Lesson',
+      icon: <BarChart3 className="w-5 h-5" />,
+      xpValue: 25
     },
     {
-      id: 'make-trade',
+      id: 2,
       title: 'Make a Trade',
-      icon: <PercentCircle className="h-6 w-6 text-blue-600" />,
-      xpReward: 5
+      icon: <Percent className="w-5 h-5" />,
+      xpValue: 5
     },
     {
-      id: 'review-moves',
-      title: 'Review Your Moves',
-      icon: <FileCheck className="h-6 w-6 text-blue-600" />,
-      xpReward: 10
+      id: 3,
+      title: 'Review Your Progress',
+      icon: <RotateCw className="w-5 h-5" />,
+      xpValue: 10
     },
     {
-      id: 'maintain-streak',
+      id: 4,
       title: '2-Day Streak',
-      icon: <Flame className="h-6 w-6 text-purple-600" />,
-      xpReward: 25
+      icon: <Zap className="w-5 h-5" style={{ color: '#8b5cf6' }} />,
+      xpValue: 25
     }
   ];
 
   return (
     <div className="mb-6">
-      <h2 className="text-xl font-bold text-slate-800 mb-3">Daily Missions</h2>
+      <h2 className="text-xl font-semibold text-slate-800 mb-4">Daily Missions</h2>
       <div className="grid grid-cols-2 gap-3">
-        {missions.map(mission => (
-          <MissionCard
+        {missions.map((mission) => (
+          <MissionItem
             key={mission.id}
             icon={mission.icon}
             title={mission.title}
-            xpReward={mission.xpReward}
-            onClick={() => onMissionClick(mission.id)}
+            xpValue={mission.xpValue}
+            onClick={() => console.log(`Mission ${mission.id} clicked`)}
           />
         ))}
       </div>
