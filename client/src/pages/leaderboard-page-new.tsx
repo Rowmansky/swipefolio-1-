@@ -22,6 +22,7 @@ import {
 } from "@/data/leaderboard-data";
 import { PortfolioContext } from "@/contexts/portfolio-context";
 import InvestorProfilePopup from "@/components/investor-profile-popup";
+import AppNavigation from "@/components/app-navigation";
 
 const LeaderboardPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"all" | "friends">("all");
@@ -537,6 +538,8 @@ const LeaderboardPage: React.FC = () => {
           onClose={handleCloseProfile} 
         />
       )}
+      
+      <AppNavigation />
     </div>
   );
 };
