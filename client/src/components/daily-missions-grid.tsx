@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Swords, Percent, List, Flame } from "lucide-react";
 
 interface MissionItemProps {
   icon: React.ReactNode;
@@ -9,79 +10,6 @@ interface MissionItemProps {
   iconColor: string;
   onClick?: () => void;
 }
-
-// Creating custom SVG icons with deeper, vibrant colors that match the reference image
-const SwordIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M14.5 12.5L19 8M8.5 18.5L5 22M8.5 8.5L5 5M17.5 17.5L22 22M8.5 8.5L12.5 12.5M12.5 12.5L8.5 18.5M12.5 12.5L17.5 17.5"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const PercentIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M19 5L5 19M9 7C9 8.10457 8.10457 9 7 9C5.89543 9 5 8.10457 5 7C5 5.89543 5.89543 5 7 5C8.10457 5 9 5.89543 9 7ZM19 17C19 18.1046 18.1046 19 17 19C15.8954 19 15 18.1046 15 17C15 15.8954 15.8954 15 17 15C18.1046 15 19 15.8954 19 17Z"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const ListIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M8 6H19M8 12H19M8 18H19M4 6H4.01M4 12H4.01M4 18H4.01"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const FlameIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M12 2C8.5 7 6 9 6 14C6 19 8.5 21 12 21C15.5 21 18 19 18 14C18 9 15.5 7 12 2Z"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
 
 const MissionItem = ({
   icon,
@@ -148,12 +76,12 @@ const MissionItem = ({
 );
 
 export default function DailyMissionsGrid() {
-  // Missions data with deeper, more vibrant colors matching the second screenshot
+  // Missions data with deeper, more vibrant colors matching the screenshot
   const missions = [
     {
       id: 1,
       title: "Win a Duel",
-      icon: <SwordIcon />,
+      icon: <Swords size={24} />,
       xpValue: 25,
       iconBg: "#4361FF",
       iconColor: "#FFFFFF",
@@ -171,7 +99,7 @@ export default function DailyMissionsGrid() {
           </span>
         </div>
       ),
-      icon: <PercentIcon />,
+      icon: <Percent size={24} />,
       xpValue: 5,
       iconBg: "#4361FF",
       iconColor: "#FFFFFF",
@@ -189,7 +117,7 @@ export default function DailyMissionsGrid() {
           </span>
         </div>
       ),
-      icon: <ListIcon />,
+      icon: <List size={24} />,
       xpValue: 10,
       iconBg: "#4361FF",
       iconColor: "#FFFFFF",
@@ -207,7 +135,7 @@ export default function DailyMissionsGrid() {
           </span>
         </div>
       ),
-      icon: <FlameIcon />,
+      icon: <Flame size={24} />,
       xpValue: 25,
       iconBg: "#9259FF",
       iconColor: "#FFFFFF",
