@@ -36,8 +36,8 @@ export default function AppNavigation() {
         <NavItem 
           icon={<Brain className="w-5 h-5" />} 
           label="Learn" 
-          isActive={isActive("/games") || location.startsWith("/games/")}
-          href="/games"
+          isActive={isActive("/learn") || location.startsWith("/learn/") || isActive("/games") || location.startsWith("/games/")}
+          href="/learn"
         />
         
         <NavItem 
