@@ -19,7 +19,7 @@ export default function LearnPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="w-full bg-blue-600 rounded-xl p-5 text-white flex items-center justify-between mb-8"
+          className="w-full bg-blue-600 rounded-xl p-6 text-white flex items-center justify-between mb-8"
         >
           <div>
             <span className="text-sm font-medium opacity-80">Fin</span>
@@ -36,7 +36,7 @@ export default function LearnPage() {
             <img 
               src="/budget-beast.svg" 
               alt="Budget Beast character" 
-              className="w-24 h-24"
+              className="w-32 h-32"
             />
           </div>
         </motion.div>
