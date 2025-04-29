@@ -33,16 +33,11 @@ export default function LearnPage() {
             </Button>
           </div>
           <div className="flex-shrink-0">
-            <div className="relative">
-              <div className="w-24 h-24 bg-green-500 rounded-lg flex items-center justify-center">
-                <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center">
-                  <span className="text-3xl">$</span>
-                </div>
-                <div className="absolute bottom-4 rounded-full w-8 h-2 bg-black"></div>
-                <div className="absolute top-4 left-4 rounded-full w-4 h-4 bg-white"></div>
-                <div className="absolute top-4 right-4 rounded-full w-4 h-4 bg-white"></div>
-              </div>
-            </div>
+            <img 
+              src="/budget-beast.svg" 
+              alt="Budget Beast character" 
+              className="w-24 h-24"
+            />
           </div>
         </motion.div>
 
@@ -110,15 +105,12 @@ export default function LearnPage() {
             {/* Budget Circle */}
             <div className="flex flex-col items-center">
               <div className="relative mb-2">
-                <div className="w-20 h-20 rounded-full flex items-center justify-center">
-                  <div className="w-20 h-20 bg-green-500 rounded-lg flex items-center justify-center">
-                    <div className="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center">
-                      <span className="text-xl">$</span>
-                    </div>
-                    <div className="absolute top-5 left-5 rounded-full w-3 h-3 bg-white"></div>
-                    <div className="absolute top-5 right-5 rounded-full w-3 h-3 bg-white"></div>
-                    <div className="absolute bottom-5 rounded-full w-6 h-1 bg-black"></div>
-                  </div>
+                <div className="w-20 h-20 flex items-center justify-center">
+                  <img 
+                    src="/budget-beast.svg" 
+                    alt="Budget Beast character" 
+                    className="w-20 h-20"
+                  />
                 </div>
                 <div className="absolute bottom-0 right-0 bg-gray-200 text-gray-800 text-xs font-bold rounded-full px-2 py-1">
                   20%
