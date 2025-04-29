@@ -8,6 +8,10 @@ import AuthPage from "@/pages/auth-page";
 import LessonPage from "@/pages/lesson-page";
 import LearnPage from "@/pages/LearnPage";
 import LearnPageNew from "@/pages/learn-page";
+import BudgetMapPage from "@/pages/budget-map-page";
+import MoneyBasicsQuiz from "@/pages/quiz/money-basics";
+import SavingStrategiesQuiz from "@/pages/quiz/saving-strategies";
+import InvestingBasicsQuiz from "@/pages/quiz/investing-basics";
 import OnboardingPage from "@/pages/onboarding-page";
 import StockDetailPage from "@/pages/stock-detail-page";
 import StockDetailView from "@/pages/stock-detail-view";
@@ -47,6 +51,10 @@ function Router() {
         <Route path="/games/market-adventure" component={MarketAdventurePage} />
         <Route path="/games/macro-mastermind" component={MacroMastermindPage} />
         <Route path="/games/investor-simulator" component={InvestorSimulatorPage} />
+        <Route path="/budget/map" component={BudgetMapPage} />
+        <Route path="/quiz/money-basics" component={MoneyBasicsQuiz} />
+        <Route path="/quiz/saving-strategies" component={SavingStrategiesQuiz} />
+        <Route path="/quiz/investing-basics" component={InvestingBasicsQuiz} />
         <Route component={NotFound} />
       </Switch>
     </PortfolioProvider>

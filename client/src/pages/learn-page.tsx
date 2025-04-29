@@ -27,7 +27,7 @@ export default function LearnPage() {
             <Button 
               variant="secondary" 
               className="mt-2 font-semibold bg-yellow-400 hover:bg-yellow-500 text-black border-0"
-              onClick={() => navigate('/learn/budget')}
+              onClick={() => navigate('/budget/map')}
             >
               Start Now
             </Button>
