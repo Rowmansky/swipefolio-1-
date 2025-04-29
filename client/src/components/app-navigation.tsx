@@ -1,4 +1,4 @@
-import { Home, BarChart3, Briefcase, User, Trophy, GamepadIcon } from "lucide-react";
+import { Home, BarChart3, Briefcase, User, Trophy, Brain } from "lucide-react";
 import { useLocation } from "wouter";
 import { motion } from "framer-motion";
 
@@ -34,8 +34,8 @@ export default function AppNavigation() {
         />
         
         <NavItem 
-          icon={<GamepadIcon className="w-5 h-5" />} 
-          label="Games" 
+          icon={<Brain className="w-5 h-5" />} 
+          label="Learn" 
           isActive={isActive("/games") || location.startsWith("/games/")}
           href="/games"
         />

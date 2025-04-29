@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 interface MissionItemProps {
   icon: React.ReactNode;
@@ -12,75 +12,135 @@ interface MissionItemProps {
 
 // Creating custom SVG icons with deeper, vibrant colors that match the reference image
 const SwordIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M14.5 12.5L19 8M8.5 18.5L5 22M8.5 8.5L5 5M17.5 17.5L22 22M8.5 8.5L12.5 12.5M12.5 12.5L8.5 18.5M12.5 12.5L17.5 17.5" 
-      stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M14.5 12.5L19 8M8.5 18.5L5 22M8.5 8.5L5 5M17.5 17.5L22 22M8.5 8.5L12.5 12.5M12.5 12.5L8.5 18.5M12.5 12.5L17.5 17.5"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
 const PercentIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M19 5L5 19M9 7C9 8.10457 8.10457 9 7 9C5.89543 9 5 8.10457 5 7C5 5.89543 5.89543 5 7 5C8.10457 5 9 5.89543 9 7ZM19 17C19 18.1046 18.1046 19 17 19C15.8954 19 15 18.1046 15 17C15 15.8954 15.8954 15 17 15C18.1046 15 19 15.8954 19 17Z" 
-      stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M19 5L5 19M9 7C9 8.10457 8.10457 9 7 9C5.89543 9 5 8.10457 5 7C5 5.89543 5.89543 5 7 5C8.10457 5 9 5.89543 9 7ZM19 17C19 18.1046 18.1046 19 17 19C15.8954 19 15 18.1046 15 17C15 15.8954 15.8954 15 17 15C18.1046 15 19 15.8954 19 17Z"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
 const ListIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8 6H19M8 12H19M8 18H19M4 6H4.01M4 12H4.01M4 18H4.01" 
-      stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M8 6H19M8 12H19M8 18H19M4 6H4.01M4 12H4.01M4 18H4.01"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
 const FlameIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 2C8.5 7 6 9 6 14C6 19 8.5 21 12 21C15.5 21 18 19 18 14C18 9 15.5 7 12 2Z" 
-      stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12 2C8.5 7 6 9 6 14C6 19 8.5 21 12 21C15.5 21 18 19 18 14C18 9 15.5 7 12 2Z"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
-const MissionItem = ({ icon, title, customTitle, xpValue, iconBg, iconColor, onClick }: MissionItemProps) => (
+const MissionItem = ({
+  icon,
+  title,
+  customTitle,
+  xpValue,
+  iconBg,
+  iconColor,
+  onClick,
+}: MissionItemProps) => (
   <motion.div
     whileHover={{ y: -1 }}
     whileTap={{ scale: 0.98 }}
     onClick={onClick}
     className="bg-white rounded-xl p-4 flex flex-col justify-between cursor-pointer"
-    style={{ 
-      height: '100%',
-      boxShadow: '0 2px 6px rgba(0,0,0,0.05)',
-      border: '1px solid rgba(0,0,0,0.03)'
+    style={{
+      height: "100%",
+      boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+      border: "1px solid rgba(0,0,0,0.03)",
     }}
   >
     <div className="flex items-center space-x-3 mb-3">
-      <div className="rounded-lg flex-shrink-0 flex items-center justify-center" 
-        style={{ 
+      <div
+        className="rounded-lg flex-shrink-0 flex items-center justify-center"
+        style={{
           backgroundColor: iconBg,
-          width: '42px',
-          height: '42px',
-          padding: '8px',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-        }}>
-        <div style={{ color: iconColor }}>
-          {icon}
-        </div>
+          width: "42px",
+          height: "42px",
+          padding: "8px",
+          boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+        }}
+      >
+        <div style={{ color: iconColor }}>{icon}</div>
       </div>
       <div className="flex-1 -mt-0.5">
         {customTitle ? (
           customTitle
         ) : (
-          <h3 className="text-black font-bold text-[17px] leading-tight">{title}</h3>
+          <h3 className="text-black font-bold text-[22px] leading-tight">
+            {title}
+          </h3>
         )}
       </div>
     </div>
-    <div className="flex" style={{ 
-        justifyContent: xpValue === 5 ? "flex-end" : (xpValue === 10 ? "flex-start" : "flex-end")
-      }}>
-      <span className="inline-flex items-center px-3 py-1.5 rounded-full text-white font-semibold"
-        style={{ 
-          backgroundColor: '#4863FF',
-          fontSize: '13px',
-          boxShadow: '0 2px 4px rgba(72, 99, 255, 0.25)'
-        }}>
+    <div
+      className="flex"
+      style={{
+        justifyContent:
+          xpValue === 5 ? "flex-end" : xpValue === 10 ? "flex-end" : "flex-end",
+      }}
+    >
+      <span
+        className="inline-flex items-center px-3 py-1.5 rounded-full text-white font-semibold"
+        style={{
+          backgroundColor: "#4863FF",
+          fontSize: "13px",
+          boxShadow: "0 2px 4px rgba(72, 99, 255, 0.25)",
+        }}
+      >
         + {xpValue} XP
       </span>
     </div>
@@ -92,54 +152,66 @@ export default function DailyMissionsGrid() {
   const missions = [
     {
       id: 1,
-      title: 'Win a Duel',
+      title: "Win a Duel",
       icon: <SwordIcon />,
       xpValue: 25,
-      iconBg: '#4361FF',
-      iconColor: '#FFFFFF'
+      iconBg: "#4361FF",
+      iconColor: "#FFFFFF",
     },
     {
       id: 2,
-      title: 'Make a Trade',
+      title: "Make a Trade",
       customTitle: (
         <div>
-          <span className="text-black font-bold text-[17px] leading-tight">Make a</span>
-          <span className="text-black font-bold text-[17px] leading-tight block">Trade</span>
+          <span className="text-black font-bold text-[22px] leading-tight">
+            Make a
+          </span>
+          <span className="text-black font-bold text-[22px] leading-tight block">
+            Trade
+          </span>
         </div>
       ),
       icon: <PercentIcon />,
       xpValue: 5,
-      iconBg: '#4361FF',
-      iconColor: '#FFFFFF'
+      iconBg: "#4361FF",
+      iconColor: "#FFFFFF",
     },
     {
       id: 3,
-      title: 'Review Your Moves',
+      title: "Review Your Moves",
       customTitle: (
         <div>
-          <span className="text-black font-bold text-[17px] leading-tight">Review</span>
-          <span className="text-black font-bold text-[17px] leading-tight block">Your Moves</span>
+          <span className="text-black font-bold text-[22px] leading-tight">
+            Review
+          </span>
+          <span className="text-black font-bold text-[22px] leading-tight block">
+            Your Moves
+          </span>
         </div>
       ),
       icon: <ListIcon />,
       xpValue: 10,
-      iconBg: '#4361FF',
-      iconColor: '#FFFFFF'
+      iconBg: "#4361FF",
+      iconColor: "#FFFFFF",
     },
     {
       id: 4,
-      title: '2-Day Streak',
+      title: "2-Day Streak",
       customTitle: (
         <div>
-          <span className="text-black font-bold text-[17px] leading-tight">2-Day</span>
-          <span className="text-black font-bold text-[17px] leading-tight block">Streak</span>
+          <span className="text-black font-bold text-[22px] leading-tight">
+            2-Day
+          </span>
+          <span className="text-black font-bold text-[22px] leading-tight block">
+            Streak
+          </span>
         </div>
       ),
       icon: <FlameIcon />,
       xpValue: 25,
-      iconBg: '#9259FF',
-      iconColor: '#FFFFFF'
-    }
+      iconBg: "#9259FF",
+      iconColor: "#FFFFFF",
+    },
   ];
 
   return (
