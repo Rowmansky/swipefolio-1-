@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link, useLocation } from 'wouter';
-import { motion } from 'framer-motion';
-import AppNavigation from '@/components/app-navigation';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { ChevronRight, DollarSign, BarChart3, User, Clock } from 'lucide-react';
+import React from "react";
+import { Link, useLocation } from "wouter";
+import { motion } from "framer-motion";
+import AppNavigation from "@/components/app-navigation";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { ChevronRight, DollarSign, BarChart3, User, Clock } from "lucide-react";
 
 export default function LearnPage() {
   const [location, navigate] = useLocation();
@@ -12,30 +12,32 @@ export default function LearnPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <AppNavigation />
-      
+
       <div className="container mx-auto px-4 py-6 pb-24">
         {/* Budget Beast Banner */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
           className="w-full bg-blue-600 rounded-xl p-6 text-white flex items-center justify-between mb-8"
         >
           <div>
-            <span className="text-sm font-medium opacity-80">Fin</span>
-            <h1 className="text-3xl font-bold mb-1">Meet the Budget Beast</h1>
-            <Button 
-              variant="secondary" 
+            <span className="text-sm font-medium opacity-80">
+              Your Finance Friend
+            </span>
+            <h1 className="text-3xl font-bold mb-1">Meet Fin</h1>
+            <Button
+              variant="secondary"
               className="mt-2 font-semibold bg-yellow-400 hover:bg-yellow-500 text-black border-0"
-              onClick={() => navigate('/budget/map')}
+              onClick={() => navigate("/budget/map")}
             >
               Start Now
             </Button>
           </div>
           <div className="flex-shrink-0">
-            <img 
-              src="/budget-beast.svg" 
-              alt="Budget Beast character" 
+            <img
+              src="/budget-beast.svg"
+              alt="Budget Beast character"
               className="w-32 h-32"
             />
           </div>
@@ -48,7 +50,7 @@ export default function LearnPage() {
           transition={{ duration: 0.4, delay: 0.1 }}
         >
           <h2 className="text-2xl font-bold mb-4">Continue Your Journey</h2>
-          
+
           <Card className="mb-6 border shadow-sm overflow-hidden">
             <div className="flex items-center p-4">
               <div className="bg-yellow-400 w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
@@ -59,12 +61,14 @@ export default function LearnPage() {
                 <p className="text-gray-600">Dollar-Cost Averaging</p>
                 <div className="flex items-center mt-1 text-gray-500 text-sm">
                   <span className="mr-3">+12 XP</span>
-                  <span className="flex items-center"><Clock className="w-3 h-3 mr-1" /> 6 min</span>
+                  <span className="flex items-center">
+                    <Clock className="w-3 h-3 mr-1" /> 6 min
+                  </span>
                 </div>
               </div>
-              <Button 
+              <Button
                 className="ml-2 rounded-full px-6"
-                onClick={() => navigate('/learn/investing-basics')}
+                onClick={() => navigate("/learn/investing-basics")}
               >
                 Continue
               </Button>
@@ -85,7 +89,7 @@ export default function LearnPage() {
               <ChevronRight className="w-6 h-6 text-gray-400" />
             </Link>
           </div>
-          
+
           <div className="grid grid-cols-3 gap-4">
             {/* Investing Circle */}
             <div className="flex flex-col items-center">
@@ -101,14 +105,14 @@ export default function LearnPage() {
               </div>
               <span className="text-sm font-medium">Investing</span>
             </div>
-            
+
             {/* Budget Circle */}
             <div className="flex flex-col items-center">
               <div className="relative mb-2">
                 <div className="w-20 h-20 flex items-center justify-center">
-                  <img 
-                    src="/budget-beast.svg" 
-                    alt="Budget Beast character" 
+                  <img
+                    src="/budget-beast.svg"
+                    alt="Budget Beast character"
                     className="w-20 h-20"
                   />
                 </div>
@@ -118,7 +122,7 @@ export default function LearnPage() {
               </div>
               <span className="text-sm font-medium">Budgeting</span>
             </div>
-            
+
             {/* Credit Circle */}
             <div className="flex flex-col items-center">
               <div className="relative mb-2">
