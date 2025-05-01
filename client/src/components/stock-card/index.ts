@@ -1,14 +1,29 @@
-// Barrel file for stock card components
-export { default as StockCardHeader } from './StockCardHeader';
-export { default as PriceChart } from './PriceChart';
-export { default as TimeframeSelector } from './TimeframeSelector';
-export { default as MetricsSection } from './MetricsSection';
-export { default as SynopsisSection } from './SynopsisSection';
-export { default as NewsSection } from './NewsSection';
-export { default as AnalystRatingsSection } from './AnalystRatingsSection';
-export { default as ComparativeAnalysisWrapper } from './ComparativeAnalysisWrapper';
-export { default as HistoricalChartWrapper } from './HistoricalChartWrapper';
+// Barrel file for stock card components to simplify imports
+import StockCardHeader from './StockCardHeader';
+import PriceChart from './PriceChart';
+import TimeframeSelector from './TimeframeSelector';
+import MetricsSection from './MetricsSection';
+import SynopsisSection from './SynopsisSection';
+import NewsSection from './NewsSection';
+import AnalystRatingsSection from './AnalystRatingsSection';
+import ComparativeAnalysisWrapper from './ComparativeAnalysisWrapper';
+import HistoricalChartWrapper from './HistoricalChartWrapper';
 
-// Export types and utilities
+// Export all components
+export {
+  StockCardHeader,
+  PriceChart,
+  TimeframeSelector,
+  MetricsSection,
+  SynopsisSection,
+  NewsSection,
+  AnalystRatingsSection,
+  ComparativeAnalysisWrapper,
+  HistoricalChartWrapper
+};
+
+// Export types
 export * from './types';
+
+// Export utility functions
 export * from './utils';

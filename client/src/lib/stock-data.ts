@@ -54,6 +54,27 @@ export interface PotentialDetails {
   relativePerformanceExplanation?: string;
 }
 
+export interface NewsItem {
+  title: string;
+  url?: string;
+  publisher?: string;
+  date?: string;
+  image?: string;
+}
+
+export interface ComparativeMetric {
+  name: string;
+  value: number | string;
+  unit?: string;
+  percentile?: number;
+  performance?: 'good' | 'average' | 'poor';
+}
+
+export interface HistoricalReturn {
+  period: string;
+  value: number;
+}
+
 export interface StockData {
   name: string;
   ticker: string;
@@ -100,10 +121,38 @@ export interface StockData {
     price: string;
     company: string;
     role: string;
+    priceTrend?: {
+      title: string;
+      description: string;
+    };
+    overview?: {
+      title: string;
+      description: string;
+    };
+    portfolioRole?: {
+      title: string;
+      description: string;
+    };
   };
   overallAnalysis: string;
   chartData: number[];
   industry: string;
+  
+  // Properties for news section
+  news?: NewsItem[];
+  
+  // Properties for comparative analysis
+  comparativeData?: {
+    description?: string;
+    metrics: ComparativeMetric[];
+  };
+  
+  // Properties for historical chart data
+  historicalData?: {
+    description?: string;
+    prices: number[];
+    returns?: HistoricalReturn[];
+  };
 }
 
 const hardcodedStocks: Record<string, StockData[]> = {
