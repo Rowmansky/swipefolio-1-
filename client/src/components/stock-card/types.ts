@@ -1,55 +1,103 @@
-import { AnimationControls, useMotionValue } from "framer-motion";
 import { StockData } from "@/lib/stock-data";
-import { YahooChartResponse } from "@/lib/yahoo-finance-client";
 
-// Define Metric structure used in handleMetricClick callback
-export interface MetricClickData {
-  name: string;
-  color: "green" | "yellow" | "red";
-  data: any; // Keep the detailed data structure needed by the modal
-}
+// Valid timeframes for stock charts
+export type TimeFrame = 
+  | '1d'   // One day
+  | '5d'   // Five days
+  | '1mo'  // One month
+  | '3mo'  // Three months
+  | '6mo'  // Six months
+  | '1y'   // One year
+  | '5y'   // Five years
+  | 'ytd'  // Year to date
+  | 'max'; // Maximum available data
 
-export interface StockCardProps {
+// Props for the StockCardHeader component
+export interface StockCardHeaderProps {
   stock: StockData;
-  onNext?: () => void;
-  onPrevious?: () => void;
-  onInvest?: () => void;
-  onMetricClick?: (metricData: MetricClickData) => void; // Callback for parent
-  onOpenCalculator?: () => void; // Callback for parent
-  currentIndex: number;
-  totalCount: number;
-  displayMode?: 'simple' | 'realtime'; // Keep displayMode if needed elsewhere
-  cardControls?: AnimationControls; // Optional controls from parent
-  x?: ReturnType<typeof useMotionValue<number>>; // Optional motion value from parent
+  formattedPrice?: string;
+  changeValue?: string;
+  changePercent?: string;
+  isPositive?: boolean;
+  onClose?: () => void;
 }
 
-// Define TimeFrame type locally if not imported
-export type TimeFrame = "1D" | "5D" | "1M" | "3M" | "6M" | "YTD" | "1Y" | "5Y" | "MAX";
-
-// Common price information shared between components
-export interface PriceInfo {
-  currentPrice: number;
-  displayPrice: string;
-  priceChange: {
-    value: number;
-    percent: number;
-  };
-  dayRange: {
-    low: number;
-    high: number;
-  };
-  latestTradingDay: string | null;
+// Props for the PriceChart component
+export interface PriceChartProps {
+  stock: StockData;
+  ticker?: string;
+  chartData?: any;
+  activeTimeframe: TimeFrame;
+  isLoading?: boolean;
 }
 
-// Chart data interfaces
-export interface ChartData {
-  chartPrices: number[];
-  timeScaleLabels: string[];
+// Props for the TimeframeSelector component
+export interface TimeframeSelectorProps {
+  activeTimeframe?: TimeFrame;
+  selectedTimeframe?: TimeFrame;
+  timeframes?: TimeFrame[];
+  timeframeLabel?: string;
+  onTimeframeChange?: (timeframe: TimeFrame) => void;
+  onSelect?: (timeframe: TimeFrame) => void;
+}
+
+// Props for the MetricsSection component
+export interface MetricsSectionProps {
+  stock: StockData;
+  onMetricClick?: (metricName: string) => void;
+}
+
+// Props for the SynopsisSection component
+export interface SynopsisSectionProps {
+  stock: StockData;
+}
+
+// Props for the NewsSection component
+export interface NewsSectionProps {
+  stock: StockData;
+}
+
+// Props for the AnalystRatingsSection component
+export interface AnalystRatingsSectionProps {
+  stock: StockData;
+}
+
+// Props for the ComparativeAnalysisWrapper component
+export interface ComparativeAnalysisWrapperProps {
+  stock: StockData;
+}
+
+// Props for the HistoricalChartWrapper component
+export interface HistoricalChartWrapperProps {
+  stock: StockData;
+}
+
+// Interface for individual stock metrics
+export interface StockMetric {
+  name: string;
+  value: number | string;
+  icon?: React.ReactNode;
+  color: 'green' | 'red' | 'yellow' | 'blue' | 'purple' | 'neutral';
+  description?: string;
+  detailLink?: string;
+  categoryName?: string;
+}
+
+// Interface for chart data points
+export interface ChartDataPoint {
+  date: string;
+  value: number;
+  originalValue?: number; // For percentage calculations
+}
+
+// Interface for formatted chart data
+export interface FormattedChartData {
+  ticker: string;
+  data: ChartDataPoint[];
   minValue: number;
   maxValue: number;
-  priceRangeMin: number;
-  priceRangeMax: number;
-  yahooChartData: YahooChartResponse | undefined;
-  isLoadingYahooData: boolean;
-  yahooError: unknown;
+  startValue: number;
+  endValue: number;
+  percentChange: number;
+  isPositive: boolean;
 }
