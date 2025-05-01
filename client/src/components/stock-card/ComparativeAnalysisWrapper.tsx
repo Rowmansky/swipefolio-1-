@@ -13,7 +13,7 @@ const ComparativeAnalysisWrapper: React.FC<ComparativeAnalysisWrapperProps> = ({
       onClick={(e) => e.stopPropagation()}
     > 
       {/* Added margin and rounded corners */}
-      <ComparativeAnalysis stock={stock} />
+      <ComparativeAnalysis currentStock={stock} />
     </div>
   );
 };
