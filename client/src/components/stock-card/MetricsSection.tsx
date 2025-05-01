@@ -78,20 +78,27 @@ const MetricsSection: React.FC<MetricsSectionProps> = ({ stock, onMetricClick })
               
               {/* Rating Star Display - Enhanced with shadow */}
               <div className="flex items-center mt-1.5 mb-1 justify-center">
-                {[...Array(5)].map((_, i) => (
-                  <div 
-                    key={i}
-                    className={`w-1.5 h-1.5 mx-0.5 rounded-full ${
-                      i < metric.value 
-                        ? metric.color === 'green' 
-                          ? 'bg-green-500' 
-                          : metric.color === 'red' 
-                            ? 'bg-red-500' 
-                            : 'bg-amber-400'
-                        : 'bg-slate-200'
-                    }`}
-                  ></div>
-                ))}
+                {[...Array(5)].map((_, i) => {
+                  // Force conversion to number and handle possible NaN
+                  const metricValue = typeof metric.value === 'number' 
+                    ? metric.value 
+                    : (Number(metric.value) || 0);
+                  
+                  return (
+                    <div 
+                      key={i}
+                      className={`w-1.5 h-1.5 mx-0.5 rounded-full ${
+                        i < metricValue
+                          ? metric.color === 'green' 
+                            ? 'bg-green-500' 
+                            : metric.color === 'red' 
+                              ? 'bg-red-500' 
+                              : 'bg-amber-400'
+                          : 'bg-slate-200'
+                      }`}
+                    ></div>
+                  );
+                })}
               </div>
               
               {/* Value and Name with enhanced styling */}
