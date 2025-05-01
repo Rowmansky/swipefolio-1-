@@ -24,9 +24,7 @@ export interface StockCardHeaderProps {
 
 // Props for the PriceChart component
 export interface PriceChartProps {
-  stock: StockData;
-  ticker?: string;
-  chartData?: any;
+  ticker: string;
   activeTimeframe: TimeFrame;
   isLoading?: boolean;
 }

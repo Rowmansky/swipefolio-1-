@@ -87,48 +87,46 @@ const PriceChart: React.FC<PriceChartProps> = ({
     }).join(' ');
   };
 
-  // Generate some sample data on timeframe change
+  // Generate sample data on timeframe change or initial load
   useEffect(() => {
-    if (ticker) {
-      // Demo data - in a real app, we would fetch this from an API
-      const generateDemoData = () => {
-        const numPoints = activeTimeframe === "1d" ? 24 : 
-                        activeTimeframe === "5d" ? 5 : 
-                        activeTimeframe === "1mo" ? 30 : 
-                        activeTimeframe === "3mo" ? 90 : 
-                        activeTimeframe === "1y" ? 365 : 100;
-        
-        const basePrice = 150 + Math.random() * 50;
-        const volatility = 0.1;
-        
-        const prices: number[] = [];
-        for (let i = 0; i < numPoints; i++) {
-          const change = (Math.random() - 0.5) * volatility * basePrice;
-          const newPrice = i === 0 ? basePrice : prices[i-1] + change;
-          prices.push(Math.max(newPrice, 1)); // Ensure price is always positive
-        }
-        
-        // Set the data
-        setChartPrices(prices);
-        setMinValue(Math.min(...prices) * 0.95);
-        setMaxValue(Math.max(...prices) * 1.05);
-        
-        // Generate time labels based on timeframe
-        const labels = [];
-        if (activeTimeframe === "1d") {
-          labels.push("9:30 AM", "12 PM", "4 PM");
-        } else if (activeTimeframe === "5d" || activeTimeframe === "1mo") {
-          labels.push("Week 1", "Week 2", "Week 3", "Week 4");
-        } else {
-          labels.push("Jan", "Apr", "Jul", "Oct", "Dec");
-        }
-        setTimeScaleLabels(labels);
-      };
+    // Demo data - in a real app, we would fetch this from an API
+    const generateDemoData = () => {
+      const numPoints = activeTimeframe === "1d" ? 24 : 
+                      activeTimeframe === "5d" ? 5 : 
+                      activeTimeframe === "1mo" ? 30 : 
+                      activeTimeframe === "3mo" ? 90 : 
+                      activeTimeframe === "1y" ? 365 : 100;
       
-      generateDemoData();
-    }
+      const basePrice = 150 + Math.random() * 50;
+      const volatility = 0.1;
+      
+      const prices: number[] = [];
+      for (let i = 0; i < numPoints; i++) {
+        const change = (Math.random() - 0.5) * volatility * basePrice;
+        const newPrice = i === 0 ? basePrice : prices[i-1] + change;
+        prices.push(Math.max(newPrice, 1)); // Ensure price is always positive
+      }
+      
+      // Set the data
+      setChartPrices(prices);
+      setMinValue(Math.min(...prices) * 0.95);
+      setMaxValue(Math.max(...prices) * 1.05);
+      
+      // Generate time labels based on timeframe
+      const labels = [];
+      if (activeTimeframe === "1d") {
+        labels.push("9:30 AM", "12 PM", "4 PM");
+      } else if (activeTimeframe === "5d" || activeTimeframe === "1mo") {
+        labels.push("Week 1", "Week 2", "Week 3", "Week 4");
+      } else {
+        labels.push("Jan", "Apr", "Jul", "Oct", "Dec");
+      }
+      setTimeScaleLabels(labels);
+    };
+    
+    generateDemoData();
   }, [ticker, activeTimeframe]);
-
+  
   return (
     <div className="relative h-64 w-full -mx-1 mt-3">
       {isLoading ? (
