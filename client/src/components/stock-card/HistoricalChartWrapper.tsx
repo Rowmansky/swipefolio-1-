@@ -9,7 +9,7 @@ interface HistoricalChartWrapperProps {
 const HistoricalChartWrapper: React.FC<HistoricalChartWrapperProps> = ({ stock }) => {
   return (
     <div className="px-4 mb-4 rounded-xl shadow-md bg-white mx-4 overflow-hidden">
-      <HistoricalPerformanceChart ticker={stock.ticker} />
+      <HistoricalPerformanceChart symbol={stock.ticker} companyName={stock.name} />
     </div>
   );
 };
