@@ -116,26 +116,21 @@ export default function StockCard({
       {showHeader && (
         <StockCardHeader
           stock={stock}
-          formattedPrice={formattedPrice}
-          changeValue={changeValue}
-          changePercent={changePercent}
-          isPositive={isPositive}
           onClose={onClose}
         />
       )}
 
       {/* Price Chart */}
       <PriceChart
-        stock={stock}
+        ticker={stock.ticker}
         activeTimeframe={activeTimeframe}
         isLoading={isLoading}
       />
 
       {/* Timeframe Selector */}
       <TimeframeSelector
-        activeTimeframe={activeTimeframe}
-        onTimeframeChange={handleTimeframeChange}
-        timeframeLabel={timeframeLabel}
+        selectedTimeframe={activeTimeframe}
+        onSelect={handleTimeframeChange}
       />
 
       {/* Metrics Section */}
